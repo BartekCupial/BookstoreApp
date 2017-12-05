@@ -7,7 +7,7 @@ USE `BookstorCZ`;
 CREATE TABLE IF NOT EXISTS `Książki` (
   `ISBN` VARCHAR(30),
   `tytuł` VARCHAR(30),
-  `autor` VARCHAR(30),
+  `autor` INT,
   `dział` VARCHAR(30),
   `liczba` INT,
   `wydawnictwo` VARCHAR(30),
@@ -131,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `Dostawcy` (
 );
 
 -- DOSTAWCY ADRESY
-CREATE TABLE IF NOT EXISTS `AdresyKlienci` (
+CREATE TABLE IF NOT EXISTS `AdresyDostawcy` (
   `ID` INT,
   `ulica` VARCHAR(30),
   `numer lokalu` VARCHAR(30),
@@ -145,13 +145,12 @@ CREATE TABLE IF NOT EXISTS `AdresyKlienci` (
 -- DOSTAWY
 CREATE TABLE IF NOT EXISTS `Dostawy` (
   `ID` INT,
-  `IDdostawcy` INT,
   `NIP` VARCHAR(30),
   `nrFaktury` VARCHAR(30),
   `dataDostawy` DATE,
   `status` ENUM('Złożono', 'Wysłano', 'Dostarczono'),
   PRIMARY KEY (`ID`),
-  FOREIGN KEY (`IDdostawcy`) REFERENCES `Dostawcy` (`NIP`)
+  FOREIGN KEY (`NIP`) REFERENCES `Dostawcy` (`NIP`)
 );
 
 -- DOTOWAROWANIE
