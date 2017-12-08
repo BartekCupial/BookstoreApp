@@ -57,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `AdresyKlienci` (
 
 -- KLIENCI
 CREATE TABLE IF NOT EXISTS `Klienci` (
-  `ID` INT,
+  `ID` INT NOT NULL AUTO_INCREMENT,
   `imię` VARCHAR(30),
   `nazwisko` VARCHAR(30), 
   `adres` INT,
@@ -74,7 +74,7 @@ CREATE TABLE IF NOT EXISTS `Zamówienia` (
   `ID` INT,
   `IDzamawiającego` INT, 
   `dataZamówienia` DATE,
-  `status` ENUM('Złożone', 'Wysłane', 'Dostarczone'),
+  `statusZamówienia` ENUM('Złożone', 'Wysłane', 'Dostarczone'),
   PRIMARY KEY (`ID`),
   FOREIGN KEY (`IDzamawiającego`) REFERENCES `Klienci` (`ID`)
 );
@@ -120,7 +120,7 @@ CREATE TABLE IF NOT EXISTS `Pracownicy` (
 CREATE TABLE IF NOT EXISTS `AdresyDostawcy` (
   `ID` INT,
   `ulica` VARCHAR(30),
-  `numer lokalu` VARCHAR(30),
+  `numerLokalu` VARCHAR(30),
   `kodPocztowy` VARCHAR(30),
   `miejscowość` VARCHAR(30),
   `województwo` VARCHAR(30),
