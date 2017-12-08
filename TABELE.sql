@@ -1,7 +1,15 @@
 -- DATABASE
-DROP DATABASE `BookstorCZ`;
+DROP DATABASE IF EXISTS `BookstorCZ`;
 CREATE DATABASE IF NOT EXISTS `BookstorCZ`;
 USE `BookstorCZ`;
+
+-- AUTORZY
+CREATE TABLE IF NOT EXISTS `Autorzy` (
+  `ID` INT,
+  `imię` VARCHAR(30),
+  `nazwisko` VARCHAR(30),
+  PRIMARY KEY (`ID`)
+);
 
 -- KSIĄŻKI
 CREATE TABLE IF NOT EXISTS `Książki` (
@@ -18,11 +26,10 @@ CREATE TABLE IF NOT EXISTS `Książki` (
   FOREIGN KEY (`autor`) REFERENCES `Autorzy` (`ID`)
 );
 
--- AUTORZY
-CREATE TABLE IF NOT EXISTS `Autorzy` (
+-- DZIAŁY
+CREATE TABLE IF NOT EXISTS `Działy` (
   `ID` INT,
-  `imię` VARCHAR(30),
-  `nazwisko` VARCHAR(30),
+  `nazwa` VARCHAR(30),
   PRIMARY KEY (`ID`)
 );
 
@@ -36,32 +43,16 @@ CREATE TABLE IF NOT EXISTS `DziałyPom` (
   FOREIGN KEY (`IDdział`) REFERENCES `Działy` (`ID`)
 );
 
--- DZIAŁY
-CREATE TABLE IF NOT EXISTS `Działy` (
+-- ADRESY KLIENCI
+CREATE TABLE IF NOT EXISTS `AdresyKlienci` (
   `ID` INT,
-  `nazwa` VARCHAR(30),
+  `ulica` VARCHAR(30),
+  `numer lokalu` VARCHAR(30),
+  `kodPocztowy` VARCHAR(30),
+  `miejscowość` VARCHAR(30),
+  `województwo` VARCHAR(30),
+  `kraj` VARCHAR(30),
   PRIMARY KEY (`ID`)
-);
-
--- ZAMÓWIONE KSIĄŻKI
-CREATE TABLE IF NOT EXISTS `ZamówioneKsiążki`(
-  `ID` INT NOT NULL AUTO_INCREMENT,
-  `ISBN` VARCHAR(30),
-  `IDzamówienia` INT,
-  `liczba` INT,
-  PRIMARY KEY (`ID`),
-  FOREIGN KEY (`IDzamówienia`) REFERENCES `Zamówienia` (`ID`),
-  FOREIGN KEY (`ISBN`) REFERENCES `Książki` (`ISBN`)
-);
-
--- ZAMÓWIENIA
-CREATE TABLE IF NOT EXISTS `Zamówienia` (
-  `ID` INT,
-  `IDzamawiającego` INT, 
-  `dataZamówienia` DATE,
-  `status` ENUM('Złożone', 'Wysłane', 'Dostarczone'),
-  PRIMARY KEY (`ID`),
-  FOREIGN KEY (`IDzamawiającego`) REFERENCES `Klienci` (`ID`)
 );
 
 -- KLIENCI
@@ -78,8 +69,29 @@ CREATE TABLE IF NOT EXISTS `Klienci` (
   FOREIGN KEY (`adres`) REFERENCES `AdresyKlienci` (`ID`)
 );
 
--- ADRESY KLIENCI
-CREATE TABLE IF NOT EXISTS `AdresyKlienci` (
+-- ZAMÓWIENIA
+CREATE TABLE IF NOT EXISTS `Zamówienia` (
+  `ID` INT,
+  `IDzamawiającego` INT, 
+  `dataZamówienia` DATE,
+  `status` ENUM('Złożone', 'Wysłane', 'Dostarczone'),
+  PRIMARY KEY (`ID`),
+  FOREIGN KEY (`IDzamawiającego`) REFERENCES `Klienci` (`ID`)
+);
+
+-- ZAMÓWIONE KSIĄŻKI
+CREATE TABLE IF NOT EXISTS `ZamówioneKsiążki`(
+  `ID` INT NOT NULL AUTO_INCREMENT,
+  `ISBN` VARCHAR(30),
+  `IDzamówienia` INT,
+  `liczba` INT,
+  PRIMARY KEY (`ID`),
+  FOREIGN KEY (`IDzamówienia`) REFERENCES `Zamówienia` (`ID`),
+  FOREIGN KEY (`ISBN`) REFERENCES `Książki` (`ISBN`)
+);
+
+-- ADRESY PRACOWNICY
+CREATE TABLE IF NOT EXISTS `AdresyPracownicy` (
   `ID` INT,
   `ulica` VARCHAR(30),
   `numer lokalu` VARCHAR(30),
@@ -104,8 +116,8 @@ CREATE TABLE IF NOT EXISTS `Pracownicy` (
   FOREIGN KEY (`adres`) REFERENCES `AdresyPracownicy` (`ID`)
 );
 
--- ADRESY PRACOWNICY
-CREATE TABLE IF NOT EXISTS `AdresyPracownicy` (
+-- DOSTAWCY ADRESY
+CREATE TABLE IF NOT EXISTS `AdresyDostawcy` (
   `ID` INT,
   `ulica` VARCHAR(30),
   `numer lokalu` VARCHAR(30),
@@ -130,18 +142,6 @@ CREATE TABLE IF NOT EXISTS `Dostawcy` (
   FOREIGN KEY (`adres`) REFERENCES `AdresyDostawcy` (`ID`)
 );
 
--- DOSTAWCY ADRESY
-CREATE TABLE IF NOT EXISTS `AdresyDostawcy` (
-  `ID` INT,
-  `ulica` VARCHAR(30),
-  `numer lokalu` VARCHAR(30),
-  `kodPocztowy` VARCHAR(30),
-  `miejscowość` VARCHAR(30),
-  `województwo` VARCHAR(30),
-  `kraj` VARCHAR(30),
-  PRIMARY KEY (`ID`)
-);
-
 -- DOSTAWY
 CREATE TABLE IF NOT EXISTS `Dostawy` (
   `ID` INT,
@@ -163,18 +163,3 @@ CREATE TABLE IF NOT EXISTS `Dotowarowanie` (
   FOREIGN KEY (`ISBN`) REFERENCES `Książki` (`ISBN`),
   FOREIGN KEY (`IDdostawy`) REFERENCES `Dostawy` (`ID`)
 );
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
