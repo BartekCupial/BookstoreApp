@@ -8,7 +8,7 @@ BEGIN
   IF EXISTS(SELECT * 
 			FROM information_schema.COLUMNS 
 			WHERE TABLE_SCHEMA = 'BookstoreCZ' 
-					AND TABLE_NAME = 'BookstoreCZ') THEN
+					AND TABLE_NAME = tabela) THEN
                      
 						SET @str = CONCAT('DELETE FROM ',tabela,' WHERE ',tabela,'.ID = IDUsun;');
 						PREPARE stmt FROM @str;
