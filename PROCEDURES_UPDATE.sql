@@ -1,6 +1,6 @@
 USE `BookstorCZ`;
 
--- USUŃ WIERSZ O PODANYM ID
+-- UPDATE KOMÓRKI O PODANYM ID WIERSZA
 DROP PROCEDURE IF EXISTS updateKomorka;
 DELIMITER //
 CREATE PROCEDURE updateKomorka(tabela CHAR(20), kolumna CHAR(20), IDWiersza INT, parametr VARCHAR(20))

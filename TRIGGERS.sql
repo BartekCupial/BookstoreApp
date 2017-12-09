@@ -1,0 +1,92 @@
+USE `BookstorCZ`;
+
+-- TRIGGER PRZED WSTAWIENIEM KLIENTA CZY JUZ NIE ISTNIEJE
+DROP TRIGGER IF EXISTS sprawdzCzyNowyKlient;
+DELIMITER //
+CREATE TRIGGER sprawdzCzyNowyKlient
+BEFORE INSERT ON Klienci
+FOR EACH ROW 
+BEGIN
+IF EXISTS(  SELECT Klienci.ID
+			FROM Klienci
+			WHERE Klienci.imię = NEW.imię) THEN
+			
+            IF EXISTS(  SELECT Klienci.ID
+						FROM Klienci
+						WHERE Klienci.nazwisko = NEW.nazwisko) THEN
+			CALL `'Podany klient istnieje'`;
+			END IF;
+END IF;
+END//
+DELIMITER ;
+
+-- TRIGGER PRZED WSTAWIENIEM PRACOWNIKA CZY JUZ NIE ISTNIEJE
+DROP TRIGGER IF EXISTS sprawdzCzyNowyPracownik;
+DELIMITER //
+CREATE TRIGGER sprawdzCzyNowyPracownik
+BEFORE INSERT ON Pracownicy
+FOR EACH ROW 
+BEGIN
+IF EXISTS(  SELECT Pracownicy.ID
+			FROM Pracownicy
+			WHERE Pracownicy.imię = NEW.imię) THEN
+			
+            IF EXISTS(  SELECT Pracownicy.ID
+						FROM Pracownicy
+						WHERE Pracownicy.nazwisko = NEW.nazwisko) THEN
+			CALL `'Podany pracownik istnieje'`;
+			END IF;
+END IF;
+END//
+DELIMITER ;
+
+-- TRIGGER PRZED WSTAWIENIEM DOSTAWCY CZY JUZ NIE ISTNIEJE
+DROP TRIGGER IF EXISTS sprawdzCzyNowyDostawca;
+DELIMITER //
+CREATE TRIGGER sprawdzCzyNowyDostawca
+BEFORE INSERT ON Dostawcy
+FOR EACH ROW 
+BEGIN
+IF EXISTS(  SELECT Dostawcy.NIP
+			FROM Dostawcy
+			WHERE Dostawcy.nazwaFirmy = NEW.nazwaFirmy) THEN
+			
+	CALL `'Podany klient istnieje'`;
+END IF;
+END//
+DELIMITER ;
+
+-- TRIGGER PO USUNIECIU KLIENTA USUN JEGO ADRES
+DROP TRIGGER IF EXISTS usunAdresKlienta;
+DELIMITER //
+CREATE TRIGGER usunAdresKlienta
+AFTER DELETE ON Klienci
+FOR EACH ROW
+BEGIN
+	DELETE FROM AdresyKlienci WHERE AdresyKlienci.ID = OLD.Klienci.ID;
+END;//
+DELIMITER ;
+
+-- TRIGGER PO USUNIECIU PRACOWNIKA USUN JEGO ADRES
+DELIMITER ;
+DROP TRIGGER IF EXISTS usunAdresPracownika;
+DELIMITER //
+CREATE TRIGGER usunAdresPracownika
+AFTER DELETE ON Pracownicy
+FOR EACH ROW
+BEGIN
+	DELETE FROM AdresyPracownicy WHERE AdresyPracownicy.ID = OLD.Pracownicy.ID;
+END;//
+DELIMITER ;
+
+-- TRIGGER PO USUNIECIU DOSTAWCY USUN JEGO ADRES
+DELIMITER ;
+DROP TRIGGER IF EXISTS usunAdresDostawcy;
+DELIMITER //
+CREATE TRIGGER usunAdresDostawcy
+AFTER DELETE ON Dostawcy
+FOR EACH ROW
+BEGIN
+	DELETE FROM AdresyDostawcy WHERE AdresyDostawcy.ID = OLD.Dostawcy.ID;
+END;//
+DELIMITER ;
