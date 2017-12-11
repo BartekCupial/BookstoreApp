@@ -125,3 +125,31 @@ IF EXISTS(  SELECT Działy.ID
 END IF;
 END//
 DELIMITER ;
+
+-- TRIGGER WYWALAJACY AUTORA BEZ KSIAZEK
+DROP TRIGGER IF EXISTS usunAutoraBezKsiazek;
+DELIMITER //
+CREATE TRIGGER usunAutoraBezKsiazek
+AFTER DELETE ON Książki
+FOR EACH ROW 
+BEGIN
+IF (select count(*) from Książki where Książki.autor = @autor) = 0 then
+		DELETE p1 FROM Autorzy p1 Where p1.ID = Old.autor;
+	END IF;
+END//
+DELIMITER ;
+
+-- TRIGGER DODAJACY AUTORA GDY POJAWIA SIE KSIAZKA
+DROP TRIGGER IF EXISTS dodajAutoraZksiazkami;
+DELIMITER //
+CREATE TRIGGER dodajAutoraZksiazkami
+AFTER INSERT ON Książki
+FOR EACH ROW 
+BEGIN
+IF (select count(*) from Książki where Książki.autor = @autor) != 0 then
+		IF NOT EXISTS(select id from Autorzy where Autorzy.id = @autor) then
+        INSERT INTO `Autorzy` VALUES (0,imie,nazwisko);
+        END IF;
+END IF;
+END//
+DELIMITER ;
