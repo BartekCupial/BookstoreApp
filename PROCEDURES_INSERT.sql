@@ -53,3 +53,21 @@ BEGIN
     INSERT INTO `Zamówienia` VALUES (ID,IDzamawiajacego, dataZamowienia, statusZamowienia);
 END //
 DELIMITER ;
+
+-- DODAJ AUTORA
+DROP PROCEDURE IF EXISTS dodajAutora;
+DELIMITER //
+CREATE PROCEDURE dodajAutora(imie VARCHAR(30), nazwisko VARCHAR(30))
+BEGIN
+	INSERT INTO `Autorzy` VALUES (0,imie,nazwisko);
+END //
+DELIMITER ;
+
+-- DODAJ DZIAŁ
+DROP PROCEDURE IF EXISTS dodajDzial;
+DELIMITER //
+CREATE PROCEDURE dodajDzial(nazwa VARCHAR(30))
+BEGIN
+	INSERT INTO `Działy` VALUES (0,nazwa);
+END //
+DELIMITER ;
