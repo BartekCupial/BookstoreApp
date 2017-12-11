@@ -71,3 +71,29 @@ BEGIN
 	INSERT INTO `Działy` VALUES (0,nazwa);
 END //
 DELIMITER ;
+
+
+
+
+
+
+-- WYPEŁNIANIE TABELI ZAMOWIONE KSIAZKI
+drop procedure if exists wypelnijZamowioneKsiazki;
+DELIMITER $$
+CREATE PROCEDURE wypelnijZamowioneKsiazki(in ISBN varchar(30), in liczba int, in IDzamówienia)
+BEGIN
+DECLARE EOS BOOLEAN DEFAULT FALSE;
+DECLARE CONTINUE HANDLER FOR NOT FOUND SET EOS = TRUE;
+
+ -- tu on się wykona tylko raz ale zrobilem to tak, zeby cos bylo, potem wymyslimy jak to zrobic
+ -- na razie jest jakis szablon
+			cycle: LOOP
+                IF EOS
+				THEN LEAVE cycle;
+				END IF;
+                INSERT INTO `ZamówioneKsiążki` VALUES (0,ISBN, IDzamówienia, liczba);
+			END LOOP cycle;
+	   COMMIT;    
+END$$
+DELIMITER ;
+
