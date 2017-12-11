@@ -106,7 +106,8 @@ CREATE TABLE IF NOT EXISTS `AdresyPracownicy` (
 CREATE TABLE IF NOT EXISTS `Pracownicy` (
   `ID` INT,
   `imię` VARCHAR(30),
-  `nazwisko` VARCHAR(30), 
+  `nazwisko` VARCHAR(30),
+  `stanowisko` VARCHAR(30), 
   `adres` INT,
   `telefon` VARCHAR(30),
   `mail` VARCHAR(30),
