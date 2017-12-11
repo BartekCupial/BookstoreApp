@@ -90,3 +90,38 @@ BEGIN
 	DELETE FROM AdresyDostawcy WHERE AdresyDostawcy.ID = OLD.Dostawcy.ID;
 END;//
 DELIMITER ;
+
+-- TRIGGER PRZED WSTAWIENIEM Autora CZY JUZ NIE ISTNIEJE
+DROP TRIGGER IF EXISTS sprawdzCzyNowyAutor;
+DELIMITER //
+CREATE TRIGGER sprawdzCzyNowyAutor
+BEFORE INSERT ON Autorzy
+FOR EACH ROW 
+BEGIN
+IF EXISTS(  SELECT Autorzy.ID
+			FROM Autorzy
+			WHERE Autorzy.imię = NEW.imię) THEN
+			
+            IF EXISTS(  SELECT Autorzy.ID
+						FROM Autorzy
+						WHERE Autorzy.nazwisko = NEW.nazwisko) THEN
+			CALL `'Podany Autor istnieje'`;
+			END IF;
+END IF;
+END//
+DELIMITER ;
+
+-- TRIGGER PRZED WSTAWIENIEM Działu CZY JUZ NIE ISTNIEJE
+DROP TRIGGER IF EXISTS sprawdzCzyNowyDzial;
+DELIMITER //
+CREATE TRIGGER sprawdzCzyNowyDzial
+BEFORE INSERT ON Działy
+FOR EACH ROW 
+BEGIN
+IF EXISTS(  SELECT Działy.ID
+			FROM Działy
+			WHERE Działy.nazwa = NEW.nazwa) THEN
+			CALL `'Podany Dział istnieje'`;
+END IF;
+END//
+DELIMITER ;
