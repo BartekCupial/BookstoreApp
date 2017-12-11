@@ -37,11 +37,11 @@ END //
 DELIMITER ;
 
 -- DODAJ DOSTAWE
-DROP PROCEDURE IF EXISTS dodajDotowanrowanie;
+DROP PROCEDURE IF EXISTS dodajDostawe;
 DELIMITER //
-CREATE PROCEDURE dodajDotowarowanie(ISBN VARCHAR(30), ID INT, IDdostawy INT, liczba INT)
+CREATE PROCEDURE dodajDostawe(NIP VARCHAR(30), nrFaktury VARCHAR(30), dataDostawy DATE, statusDostawy VARCHAR(30))
 BEGIN
-    INSERT INTO `Dotowarowanie` VALUES (0,ISBN, IDdostawy, liczba);
+    INSERT INTO `Dostawy` VALUES (0,NIP, nrFaktury, dataDostawy, statusDostawy);
 END //
 DELIMITER ;
 
