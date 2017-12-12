@@ -72,7 +72,14 @@ BEGIN
 END //
 DELIMITER ;
 
-
+-- DODAJ KSIĄŻKĘ
+DROP PROCEDURE IF EXISTS dodajKsiążkę;
+DELIMITER //
+CREATE PROCEDURE dodajKsiążkę(ISBN varchar (30), tytuł varchar (30), autor int, dział varchar (30), liczba int, wydawnictwo varchar(30), rokWydania int, cena int, opis varchar (30))
+BEGIN
+	INSERT INTO `Książki` VALUES (ISBN, tytuł, autor, dział, liczba, wydawnictwo, rokWydania, cena, opis);
+END //
+DELIMITER ;
 
 
 
