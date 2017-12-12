@@ -81,7 +81,13 @@ BEGIN
 END //
 DELIMITER ;
 
+-----------------------------------------
 
+//////// do wypełnianaia zamówionych książdek i dotowarownaia służy trigger liczba1 liczba2
+///// to będzie potrzebne do składnaia zamówiniea
+/////// wypełniej zamówiniee , jęsli zakończył klikajac zamów
+.//////// to wtedy commit jak nie to rollback i triggery już się tym zajmą
+///////modyfikuj mój kod jak jest taka potrzeba, on nie gryzie.... chyba
 
 
 -- WYPEŁNIANIE TABELI ZAMOWIONE KSIAZKI
@@ -104,7 +110,7 @@ DECLARE CONTINUE HANDLER FOR NOT FOUND SET EOS = TRUE;
 END$$
 DELIMITER ;
 
-
+/////// to samo co powyżej 
 
 drop procedure wypelnijDotowarowanie;
 DELIMITER $$
