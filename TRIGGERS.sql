@@ -153,3 +153,30 @@ IF (select count(*) from Książki where Książki.autor = @autor) != 0 then
 END IF;
 END//
 DELIMITER ;
+
+
+
+-- TRIGGER ZMNIEJSZAJĄCY LICZBĘ KSIĄŻEK NA PODSTAWIE ZAMOWIONYCH KSIĄŻEK
+DROP TRIGGER IF EXISTS liczbaKsiążek1;
+DELIMITER //
+CREATE TRIGGER liczbaKsiążek1
+AFTER INSERT ON ZamówioneKsiążki
+FOR EACH ROW 
+BEGIN
+UPDATE Książki(ISBN, autor, tytuł, dział, (OLD.liczba - @liczba), wydawnictwo, rokWydania, cena, opis)
+END//
+DELIMITER ;	
+
+
+
+-- TRIGGER ZWIĘKSZAJĄCY LICZBĘ KSIĄŻEK NA PODSTAWIE DOTOWAROWANIA
+DROP TRIGGER IF EXISTS liczbaKsiążek2;
+DELIMITER //
+CREATE TRIGGER liczbaKsiążek2
+AFTER INSERT ON Dotowarowanie
+FOR EACH ROW 
+BEGIN
+UPDATE Książki(ISBN, autor, tytuł, dział, (OLD.liczba + @liczba), wydawnictwo, rokWydania, cena, opis)
+
+END//
+DELIMITER ;	
