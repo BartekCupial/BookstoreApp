@@ -40,7 +40,6 @@ CREATE TABLE IF NOT EXISTS `AdresyKlienci` (
 
 -- KLIENCI
 CREATE TABLE IF NOT EXISTS `Klienci` (
-  `ID` INT NOT NULL AUTO_INCREMENT,
   `imię` VARCHAR(30),
   `nazwisko` VARCHAR(30), 
   `adres` INT,
@@ -48,28 +47,34 @@ CREATE TABLE IF NOT EXISTS `Klienci` (
   `mail` VARCHAR(30),
   `login` VARCHAR(30),
   `hasło` VARCHAR(30),
-  PRIMARY KEY (`ID`), 
+  PRIMARY KEY (`mail`), 
   FOREIGN KEY (`adres`) REFERENCES `AdresyKlienci` (`ID`)
 );
 
 -- ZAMÓWIENIA
 CREATE TABLE IF NOT EXISTS `Zamówienia` (
   `ID` INT,
-  `IDzamawiającego` INT, 
+  `IDzamawiającego` varchar (30), 
   `dataZamówienia` DATE,
   `statusZamówienia` ENUM('Złożone', 'Wysłane', 'Dostarczone'),
   PRIMARY KEY (`ID`),
-  FOREIGN KEY (`IDzamawiającego`) REFERENCES `Klienci` (`ID`)
+  FOREIGN KEY (`IDzamawiającego`) REFERENCES `Klienci` (`mail`)
 );
 
 -- ZAMÓWIONE KSIĄŻKI
 CREATE TABLE IF NOT EXISTS `ZamówioneKsiążki`(
   `ISBN` VARCHAR(30),
+  `liczba` INT,
+  PRIMARY KEY (`ISBN`)
+);
+
+CREATE TABLE IF NOT EXISTS `ZamówioneKsiążkiHistoria`(
+  `ISBN` VARCHAR(30),
   `IDzamówienia` INT,
   `liczba` INT,
-  PRIMARY KEY (`ISBN`),
   FOREIGN KEY (`IDzamówienia`) REFERENCES `Zamówienia` (`ID`)
 );
+
 
 -- DOSTAWCY ADRESY
 CREATE TABLE IF NOT EXISTS `AdresyDostawcy` (
@@ -108,13 +113,20 @@ CREATE TABLE IF NOT EXISTS `Dostawy` (
   FOREIGN KEY (`NIP`) REFERENCES `Dostawcy` (`NIP`)
 );
 
--- DOTOWAROWANIE
-CREATE TABLE IF NOT EXISTS `Dotowarowanie` (
+-- DOTOWAROWANIE HISTORIA sluzy zobaczeniu ile książek było zamówionych przy jakiej dostawie
+-- nie dajemy primary key ISBN bo to by uniemożliwiło wstawianie ksiązek wiele razy, a tego byśmy nie chcieli
+CREATE TABLE IF NOT EXISTS `DotowarowanieHistoria` (
   `ISBN` VARCHAR(30),
   `IDdostawy` INT,
   `liczba` INT,
-  PRIMARY KEY (`ISBN`),
   FOREIGN KEY (`IDdostawy`) REFERENCES `Dostawy` (`ID`)
+);
+
+-- DOTOWAROWANIE jest tableja pomocnicza 
+CREATE TABLE IF NOT EXISTS `Dotowarowanie` (
+  `ISBN` VARCHAR(30),
+  `liczba` INT,
+  PRIMARY KEY (`ISBN`)
 );
 
 -- KSIĄŻKI
@@ -150,7 +162,6 @@ CREATE TABLE IF NOT EXISTS `AdresyPracownicy` (
 
 -- PRACOWNICY
 CREATE TABLE IF NOT EXISTS `Pracownicy` (
-  `ID` INT,
   `imię` VARCHAR(30),
   `nazwisko` VARCHAR(30),
   `stanowisko` VARCHAR(30), 
@@ -159,7 +170,7 @@ CREATE TABLE IF NOT EXISTS `Pracownicy` (
   `mail` VARCHAR(30),
   `login` VARCHAR(30),
   `hasło` VARCHAR(30),
-  PRIMARY KEY (`ID`), 
+  PRIMARY KEY (`mail`), 
   FOREIGN KEY (`adres`) REFERENCES `AdresyPracownicy` (`ID`)
 );
 
