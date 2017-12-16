@@ -170,34 +170,4 @@ END IF;
 END//
 DELIMITER ;
 
-////// JESLI NIE MA DZIAŁU TO DODAJ
-//////TODO
 
--- TRIGGER ZMNIEJSZAJĄCY LICZBĘ KSIĄŻEK NA PODSTAWIE ZAMOWIONYCH KSIĄŻEK
-DROP TRIGGER IF EXISTS liczbaKsiążek1;
-DELIMITER //
-CREATE TRIGGER liczbaKsiążek1
-AFTER INSERT ON ZamówioneKsiążki
-FOR EACH ROW 
-BEGIN
-	// UŻWAAJ ISTNIEJĄCEGO KODU
-    // MASZ PRZECIEŻ updateKomórka
-	UPDATE Książki(ISBN, autor, tytuł, dział, (OLD.liczba - @liczba), wydawnictwo, rokWydania, cena, opis)
-END//
-DELIMITER ;	
-
-
-
--- TRIGGER ZWIĘKSZAJĄCY LICZBĘ KSIĄŻEK NA PODSTAWIE DOTOWAROWANIA
-DROP TRIGGER IF EXISTS liczbaKsiążek2;
-DELIMITER //
-CREATE TRIGGER liczbaKsiążek2
-AFTER INSERT ON Dotowarowanie
-FOR EACH ROW 
-BEGIN
-////// to samo co powyżej używaj update który istnieje po to isnieje właśnie
-/////// miełąo Ci to ułatwić robotę a nie utrudnić
-UPDATE Książki(ISBN, autor, tytuł, dział, (OLD.liczba + @liczba), wydawnictwo, rokWydania, cena, opis)
-
-END//
-DELIMITER ;	
