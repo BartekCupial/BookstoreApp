@@ -1,44 +1,25 @@
 USE `BookstorCZ`;
 
 -- TRIGGER PRZED WSTAWIENIEM KLIENTA CZY JUZ NIE ISTNIEJE
-DROP TRIGGER IF EXISTS sprawdzCzyNowyKlient;
+DROP TRIGGER IF EXISTS sprawdzCzyNowyCzłowiek;
 DELIMITER //
-CREATE TRIGGER sprawdzCzyNowyKlient
-BEFORE INSERT ON Klienci
+CREATE TRIGGER sprawdzCzyNowyCzłowiek
+BEFORE INSERT ON Ludzie
 FOR EACH ROW 
 BEGIN
-IF EXISTS(  SELECT Klienci.ID
-			FROM Klienci
-			WHERE Klienci.imię = NEW.imię) THEN
+IF EXISTS(  SELECT Ludzie.ID
+			FROM Ludzie
+			WHERE Ludzie.imię = NEW.imię) THEN
 			
-            IF EXISTS(  SELECT Klienci.ID
-						FROM Klienci
-						WHERE Klienci.nazwisko = NEW.nazwisko) THEN
-			CALL `'Podany klient istnieje'`;
+            IF EXISTS(  SELECT Ludzie.ID
+						FROM Ludzie
+						WHERE Ludzie.nazwisko = NEW.nazwisko) THEN
+			CALL `'Podany człowiek istnieje'`;
 			END IF;
 END IF;
 END//
 DELIMITER ;
 
--- TRIGGER PRZED WSTAWIENIEM PRACOWNIKA CZY JUZ NIE ISTNIEJE
-DROP TRIGGER IF EXISTS sprawdzCzyNowyPracownik;
-DELIMITER //
-CREATE TRIGGER sprawdzCzyNowyPracownik
-BEFORE INSERT ON Pracownicy
-FOR EACH ROW 
-BEGIN
-IF EXISTS(  SELECT Pracownicy.ID
-			FROM Pracownicy
-			WHERE Pracownicy.imię = NEW.imię) THEN
-			
-            IF EXISTS(  SELECT Pracownicy.ID
-						FROM Pracownicy
-						WHERE Pracownicy.nazwisko = NEW.nazwisko) THEN
-			CALL `'Podany pracownik istnieje'`;
-			END IF;
-END IF;
-END//
-DELIMITER ;
 
 -- TRIGGER PRZED WSTAWIENIEM DOSTAWCY CZY JUZ NIE ISTNIEJE
 DROP TRIGGER IF EXISTS sprawdzCzyNowyDostawca;
@@ -51,33 +32,22 @@ IF EXISTS(  SELECT Dostawcy.NIP
 			FROM Dostawcy
 			WHERE Dostawcy.nazwaFirmy = NEW.nazwaFirmy) THEN
 			
-	CALL `'Podany klient istnieje'`;
+	CALL `'Podany dostawca istnieje'`;
 END IF;
 END//
 DELIMITER ;
 
--- TRIGGER PO USUNIECIU KLIENTA USUN JEGO ADRES
-DROP TRIGGER IF EXISTS usunAdresKlienta;
+-- TRIGGER PO USUNIECIU UŻYTKOWNIKA USUN JEGO ADRES
+DROP TRIGGER IF EXISTS usunAdres;
 DELIMITER //
-CREATE TRIGGER usunAdresKlienta
-AFTER DELETE ON Klienci
+CREATE TRIGGER usunAdres
+AFTER DELETE ON Ludzie
 FOR EACH ROW
 BEGIN
-	DELETE FROM AdresyKlienci WHERE AdresyKlienci.ID = OLD.Klienci.ID;
+	DELETE FROM Adresy WHERE Adresy.ID = OLD.Ludzie.ID;
 END;//
 DELIMITER ;
 
--- TRIGGER PO USUNIECIU PRACOWNIKA USUN JEGO ADRES
-DELIMITER ;
-DROP TRIGGER IF EXISTS usunAdresPracownika;
-DELIMITER //
-CREATE TRIGGER usunAdresPracownika
-AFTER DELETE ON Pracownicy
-FOR EACH ROW
-BEGIN
-	DELETE FROM AdresyPracownicy WHERE AdresyPracownicy.ID = OLD.Pracownicy.ID;
-END;//
-DELIMITER ;
 
 -- TRIGGER PO USUNIECIU DOSTAWCY USUN JEGO ADRES
 DELIMITER ;

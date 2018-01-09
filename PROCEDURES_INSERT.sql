@@ -5,16 +5,16 @@ DROP PROCEDURE IF EXISTS dodajKlienta;
 DELIMITER //
 CREATE PROCEDURE dodajKlienta(imie VARCHAR(30), nazwisko VARCHAR(30), adres INT, telefon VARCHAR(30), mail VARCHAR(30), login VARCHAR(30), haslo VARCHAR(30))
 BEGIN
-	INSERT INTO `Klienci` VALUES (0,imie,nazwisko,adres,telefon, mail, login, haslo);
+	INSERT INTO `Ludzie` VALUES (0,imie,nazwisko,adres,telefon, mail, login, haslo, 'Klient');
 END //
 DELIMITER ;
 
 -- DODAJ PRACOWNIKA
 DROP PROCEDURE IF EXISTS dodajPracownika;
 DELIMITER //
-CREATE PROCEDURE dodajPracownika(imie VARCHAR(30), nazwisko VARCHAR(30), adres INT, telefon VARCHAR(30), mail VARCHAR(30), login VARCHAR(30), haslo VARCHAR(30))
+CREATE PROCEDURE dodajPracownika(imie VARCHAR(30), nazwisko VARCHAR(30), adres INT, telefon VARCHAR(30), mail VARCHAR(30), login VARCHAR(30), haslo VARCHAR(30), stanowisko VARCHAR(30)))
 BEGIN
-	INSERT INTO `Pracownicy` VALUES (0,imie,nazwisko,adres,telefon, mail, login, haslo);
+	INSERT INTO `Ludzie` VALUES (0,imie,nazwisko,adres,telefon, mail, login, haslo, stanowisko);
 END //
 DELIMITER ;
 
