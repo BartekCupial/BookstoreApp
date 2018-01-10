@@ -11,21 +11,6 @@ CREATE TABLE IF NOT EXISTS `Autorzy` (
   PRIMARY KEY (`ID`)
 );
 
--- KSIĄŻKI
-CREATE TABLE IF NOT EXISTS `Ksiazki` (
-  `ISBN` VARCHAR(30),
-  `tytul` VARCHAR(30),
-  `autor` INT,
-  `dzial` VARCHAR(30),
-  `liczba` INT,
-  `wydawnictwo` VARCHAR(30),
-  `rokWydania` INT,
-  `cena` INT,
-  `opis` VARCHAR(30),
-  PRIMARY KEY (`ISBN`),
-  FOREIGN KEY (`autor`) REFERENCES `Autorzy` (`ID`)
-);
-
 -- DZIAŁY
 CREATE TABLE IF NOT EXISTS `Dzialy` (
   `ID` INT AUTO_INCREMENT,
@@ -33,14 +18,20 @@ CREATE TABLE IF NOT EXISTS `Dzialy` (
   PRIMARY KEY (`ID`)
 );
 
--- DZIAŁYPOM
-CREATE TABLE IF NOT EXISTS `DzialyPom` (
-  `ID` INT NOT NULL AUTO_INCREMENT,
+-- KSIĄŻKI
+CREATE TABLE IF NOT EXISTS `Ksiazki` (
   `ISBN` VARCHAR(30),
-  `IDdzial` INT,
-  PRIMARY KEY (`ID`),
-  FOREIGN KEY (`ISBN`) REFERENCES `Ksiazki` (`ISBN`),
-  FOREIGN KEY (`IDdzial`) REFERENCES `Dzialy` (`ID`)
+  `tytul` VARCHAR(30),
+  `autor` INT,
+  `dzial` int,
+  `liczba` INT,
+  `wydawnictwo` VARCHAR(30),
+  `rokWydania` INT,
+  `cena` INT,
+  `opis` VARCHAR(30),
+  PRIMARY KEY (`ISBN`),
+  FOREIGN KEY (`autor`) REFERENCES `Autorzy` (`ID`),
+  foreign key (`dzial`) references `Dzialy` (`ID`)
 );
 
 -- ADRESY
