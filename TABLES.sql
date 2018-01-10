@@ -91,18 +91,6 @@ CREATE TABLE IF NOT EXISTS `ZamowioneKsiazki`(
   FOREIGN KEY (`ISBN`) REFERENCES `Ksiazki` (`ISBN`)
 );
 
--- DOSTAWCY ADRESY
-CREATE TABLE IF NOT EXISTS `AdresyDostawcy` (
-  `ID` INT AUTO_INCREMENT,
-  `ulica` VARCHAR(30),
-  `numerLokalu` VARCHAR(30),
-  `kodPocztowy` VARCHAR(30),
-  `miejscowosc` VARCHAR(30),
-  `wojewodztwo` VARCHAR(30),
-  `kraj` VARCHAR(30),
-  PRIMARY KEY (`ID`)
-);
-
 -- DOSTAWCY
 CREATE TABLE IF NOT EXISTS `Dostawcy` (
   `NIP` VARCHAR(30),
@@ -114,7 +102,7 @@ CREATE TABLE IF NOT EXISTS `Dostawcy` (
   `mail` VARCHAR(30),
   `nrKonta` VARCHAR(30),
   PRIMARY KEY (`NIP`),
-  FOREIGN KEY (`adres`) REFERENCES `AdresyDostawcy` (`ID`)
+  FOREIGN KEY (`adres`) REFERENCES `Adresy` (`ID`)
 );
 
 -- DOSTAWY
