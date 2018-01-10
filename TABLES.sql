@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS `Ludzie` (
   `mail` VARCHAR(30),
   `login` VARCHAR(30),
   `hasło` VARCHAR(30),
-  `stanowisko` VARCHAR(30), -- stanowisko = stanowisko pracownika lub klient 
+  `stanowisko` enum('Klient', 'Pracownik', 'Admin'), -- stanowisko = stanowisko pracownika lub klient 
   PRIMARY KEY (`ID`), 
   FOREIGN KEY (`adres`) REFERENCES `Adresy` (`ID`)
 );
