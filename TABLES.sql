@@ -5,7 +5,7 @@ USE `BookstorCZ`;
 
 -- AUTORZY
 CREATE TABLE IF NOT EXISTS `Autorzy` (
-  `ID` INT,
+  `ID` INT AUTO_INCREMENT,
   `imie` VARCHAR(30),
   `nazwisko` VARCHAR(30),
   PRIMARY KEY (`ID`)
@@ -28,7 +28,7 @@ CREATE TABLE IF NOT EXISTS `Ksiazki` (
 
 -- DZIAŁY
 CREATE TABLE IF NOT EXISTS `Dzialy` (
-  `ID` INT,
+  `ID` INT AUTO_INCREMENT,
   `nazwa` VARCHAR(30),
   PRIMARY KEY (`ID`)
 );
@@ -45,7 +45,7 @@ CREATE TABLE IF NOT EXISTS `DzialyPom` (
 
 -- ADRESY
 CREATE TABLE IF NOT EXISTS `Adresy` (
-  `ID` INT,
+  `ID` INT AUTO_INCREMENT,
   `ulica` VARCHAR(30),
   `numer lokalu` VARCHAR(30),
   `kodPocztowy` VARCHAR(30),
@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS `Ludzie` (
 
 -- ZAMÓWIENIA
 CREATE TABLE IF NOT EXISTS `Zamowienia` (
-  `ID` INT,
+  `ID` INT AUTO_INCREMENT,
   `IDzamawiajacego` INT,
   `dataZamowienia` DATE,
   `statusZamowienia` ENUM('Zlozone', 'Wyslane', 'Dostarczone'),
@@ -93,7 +93,7 @@ CREATE TABLE IF NOT EXISTS `ZamowioneKsiazki`(
 
 -- DOSTAWCY ADRESY
 CREATE TABLE IF NOT EXISTS `AdresyDostawcy` (
-  `ID` INT,
+  `ID` INT AUTO_INCREMENT,
   `ulica` VARCHAR(30),
   `numerLokalu` VARCHAR(30),
   `kodPocztowy` VARCHAR(30),
@@ -119,7 +119,7 @@ CREATE TABLE IF NOT EXISTS `Dostawcy` (
 
 -- DOSTAWY
 CREATE TABLE IF NOT EXISTS `Dostawy` (
-  `ID` INT,
+  `ID` INT AUTO_INCREMENT,
   `NIP` VARCHAR(30),
   `nrFaktury` VARCHAR(30),
   `dataDostawy` DATE,
