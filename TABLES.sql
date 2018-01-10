@@ -77,7 +77,7 @@ CREATE TABLE IF NOT EXISTS `Zamówienia` (
   `dataZamówienia` DATE,
   `statusZamówienia` ENUM('Złożone', 'Wysłane', 'Dostarczone'),
   PRIMARY KEY (`ID`),
-  FOREIGN KEY (`IDzamawiającego`) REFERENCES `Klienci` (`ID`)
+  FOREIGN KEY (`IDzamawiającego`) REFERENCES `Ludzie` (`ID`)
 );
 
 -- ZAMÓWIONE KSIĄŻKI
