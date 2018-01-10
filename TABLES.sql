@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS `DzialyPom` (
 CREATE TABLE IF NOT EXISTS `Adresy` (
   `ID` INT AUTO_INCREMENT,
   `ulica` VARCHAR(30),
-  `numer lokalu` VARCHAR(30),
+  `numerLokalu` VARCHAR(30),
   `kodPocztowy` VARCHAR(30),
   `miejscowosc` VARCHAR(30),
   `wojewodztwo` VARCHAR(30),
