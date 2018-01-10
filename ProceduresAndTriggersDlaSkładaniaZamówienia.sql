@@ -1,6 +1,3 @@
-
-
-
 -- w tabeli zamówienie jest pole idzamawiajacego, nie wiem jak je pozyskać, w tej chwili wpisuje mu maila
 -- bo skąd ma znać swoje id jak jest autoincrement xd
 DROP PROCEDURE IF EXISTS złóżZamówienie;
@@ -49,6 +46,8 @@ BEGIN
 END //
 DELIMITER ;
 
+
+
 -- nie wiem jak to ogarniemy potem, że przy kliknięciu w książkę zamówi, zakładam że weźmiemy ISBN
 -- daje możliwość zamówienia klientowi większej liczby książek, można to wywalić i założyć ze zamawia 1
 DROP PROCEDURE IF EXISTS wrzućKsiążkęDoKoszyka;
@@ -60,4 +59,3 @@ BEGIN
     WHERE Zamówienia.ISBN = ISBNt;
 END //
 DELIMITER ;
-

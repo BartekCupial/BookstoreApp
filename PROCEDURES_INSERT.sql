@@ -5,16 +5,16 @@ DROP PROCEDURE IF EXISTS dodajKlienta;
 DELIMITER //
 CREATE PROCEDURE dodajKlienta(imie VARCHAR(30), nazwisko VARCHAR(30), adres INT, telefon VARCHAR(30), mail VARCHAR(30), login VARCHAR(30), haslo VARCHAR(30))
 BEGIN
-	INSERT INTO `Klienci` VALUES (0,imie,nazwisko,adres,telefon, mail, login, haslo);
+	INSERT INTO `Ludzie` VALUES (0,imie,nazwisko,adres,telefon, mail, login, haslo, 'Klient');
 END //
 DELIMITER ;
 
 -- DODAJ PRACOWNIKA
 DROP PROCEDURE IF EXISTS dodajPracownika;
 DELIMITER //
-CREATE PROCEDURE dodajPracownika(imie VARCHAR(30), nazwisko VARCHAR(30), adres INT, telefon VARCHAR(30), mail VARCHAR(30), login VARCHAR(30), haslo VARCHAR(30))
+CREATE PROCEDURE dodajPracownika(imie VARCHAR(30), nazwisko VARCHAR(30), adres INT, telefon VARCHAR(30), mail VARCHAR(30), login VARCHAR(30), haslo VARCHAR(30), stanowisko VARCHAR(30))
 BEGIN
-	INSERT INTO `Pracownicy` VALUES (0,imie,nazwisko,adres,telefon, mail, login, haslo);
+	INSERT INTO `Ludzie` VALUES (0,imie,nazwisko,adres,telefon, mail, login, haslo, stanowisko);
 END //
 DELIMITER ;
 
@@ -81,5 +81,47 @@ BEGIN
 END //
 DELIMITER ;
 
+<<<<<<< HEAD
 
+=======
+-- WYPEŁNIANIE TABELE ZAMOWIONE KSIAZKI
+DROP PROCEDURE IF EXISTS wypelnijZamowioneKsiazki;
+DELIMITER $$
+CREATE PROCEDURE wypelnijZamowioneKsiazki(IN ISBN varchar(30), IN liczba INT, IN IDzamówienia INT)
+BEGIN
+DECLARE EOS BOOLEAN DEFAULT FALSE;
+DECLARE CONTINUE HANDLER FOR NOT FOUND SET EOS = TRUE;
+
+ -- tu on się wykona tylko raz ale zrobilem to tak, zeby cos bylo, potem wymyslimy jak to zrobic
+ -- na razie jest jakis szablon
+			cycle: LOOP
+                IF EOS
+				THEN LEAVE cycle;
+				END IF;
+                INSERT INTO `ZamówioneKsiążki` VALUES (0,ISBN, IDzamówienia, liczba);
+			END LOOP cycle;
+	   COMMIT;    
+END$$
+DELIMITER ;
+
+-- WYPEŁNIJ DOTOWAROWANIE
+DROP PROCEDURE wypelnijDotowarowanie;
+DELIMITER $$
+CREATE PROCEDURE wypelnijDotowarowanie(IN ISBN VARCHAR(30), IN liczba INT, IN IDdostawy INT)
+BEGIN
+DECLARE EOS BOOLEAN DEFAULT FALSE;
+DECLARE CONTINUE HANDLER FOR NOT FOUND SET EOS = TRUE;
+
+ -- tu on się wykona tylko raz ale zrobilem to tak, zeby cos bylo, potem wymyslimy jak to zrobic
+ -- na razie jest jakis szablon
+			cycle: LOOP
+                IF EOS
+				THEN LEAVE cycle;
+				END IF;
+                INSERT INTO `ZamówioneKsiążki` VALUES (0,ISBN, IDdostawy, liczba);
+			END LOOP cycle;
+	   COMMIT;    
+END$$
+DELIMITER ;
+>>>>>>> Weronika_Fix2
 
