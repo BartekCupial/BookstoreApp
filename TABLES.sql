@@ -48,7 +48,6 @@ CREATE TABLE IF NOT EXISTS `Adresy` (
 
 -- LUDZIE
 CREATE TABLE IF NOT EXISTS `Ludzie` (
-  `ID` INT NOT NULL AUTO_INCREMENT,
   `imie` VARCHAR(30),
   `nazwisko` VARCHAR(30),
   `adres` INT,
@@ -57,18 +56,18 @@ CREATE TABLE IF NOT EXISTS `Ludzie` (
   `login` VARCHAR(30),
   `haslo` VARCHAR(30),
   `stanowisko` enum('Klient', 'Pracownik', 'Admin'), -- stanowisko = stanowisko pracownika lub klient
-  PRIMARY KEY (`ID`),
+  PRIMARY KEY (`login`),
   FOREIGN KEY (`adres`) REFERENCES `Adresy` (`ID`)
 );
 
 -- ZAMÓWIENIA
 CREATE TABLE IF NOT EXISTS `Zamowienia` (
   `ID` INT AUTO_INCREMENT,
-  `IDzamawiajacego` INT,
+  `IDzamawiajacego` varchar(30),
   `dataZamowienia` DATE,
   `statusZamowienia` ENUM('Zlozone', 'Wyslane', 'Dostarczone'),
   PRIMARY KEY (`ID`),
-  FOREIGN KEY (`IDzamawiajacego`) REFERENCES `Ludzie` (`ID`)
+  FOREIGN KEY (`IDzamawiajacego`) REFERENCES `Ludzie` (`login`)
 );
 
 -- ZAMÓWIONE KSIĄŻKI
