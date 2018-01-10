@@ -12,7 +12,7 @@ DELIMITER ;
 -- DODAJ PRACOWNIKA
 DROP PROCEDURE IF EXISTS dodajPracownika;
 DELIMITER //
-CREATE PROCEDURE dodajPracownika(imie VARCHAR(30), nazwisko VARCHAR(30), adres INT, telefon VARCHAR(30), mail VARCHAR(30), login VARCHAR(30), haslo VARCHAR(30), stanowisko VARCHAR(30)))
+CREATE PROCEDURE dodajPracownika(imie VARCHAR(30), nazwisko VARCHAR(30), adres INT, telefon VARCHAR(30), mail VARCHAR(30), login VARCHAR(30), haslo VARCHAR(30), stanowisko VARCHAR(30))
 BEGIN
 	INSERT INTO `Ludzie` VALUES (0,imie,nazwisko,adres,telefon, mail, login, haslo, stanowisko);
 END //
@@ -81,19 +81,10 @@ BEGIN
 END //
 DELIMITER ;
 
------------------------------------------
-
-//////// do wypełnianaia zamówionych książdek i dotowarownaia służy trigger liczba1 liczba2
-///// to będzie potrzebne do składnaia zamówiniea
-/////// wypełniej zamówiniee , jęsli zakończył klikajac zamów
-.//////// to wtedy commit jak nie to rollback i triggery już się tym zajmą
-///////modyfikuj mój kod jak jest taka potrzeba, on nie gryzie.... chyba
-
-
--- WYPEŁNIANIE TABELI ZAMOWIONE KSIAZKI
-drop procedure if exists wypelnijZamowioneKsiazki;
+-- WYPEŁNIANIE TABELE ZAMOWIONE KSIAZKI
+DROP PROCEDURE IF EXISTS wypelnijZamowioneKsiazki;
 DELIMITER $$
-CREATE PROCEDURE wypelnijZamowioneKsiazki(in ISBN varchar(30), in liczba int, in IDzamówienia)
+CREATE PROCEDURE wypelnijZamowioneKsiazki(IN ISBN varchar(30), IN liczba INT, IN IDzamówienia INT)
 BEGIN
 DECLARE EOS BOOLEAN DEFAULT FALSE;
 DECLARE CONTINUE HANDLER FOR NOT FOUND SET EOS = TRUE;
@@ -110,11 +101,10 @@ DECLARE CONTINUE HANDLER FOR NOT FOUND SET EOS = TRUE;
 END$$
 DELIMITER ;
 
-/////// to samo co powyżej 
-
-drop procedure wypelnijDotowarowanie;
+-- WYPEŁNIJ DOTOWAROWANIE
+DROP PROCEDURE wypelnijDotowarowanie;
 DELIMITER $$
-CREATE PROCEDURE wypelnijDotowarowanie(in ISBN varchar(30), in liczba int, in IDdostawy int)
+CREATE PROCEDURE wypelnijDotowarowanie(IN ISBN VARCHAR(30), IN liczba INT, IN IDdostawy INT)
 BEGIN
 DECLARE EOS BOOLEAN DEFAULT FALSE;
 DECLARE CONTINUE HANDLER FOR NOT FOUND SET EOS = TRUE;
