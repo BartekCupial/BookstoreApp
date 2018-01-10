@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS `DziałyPom` (
 
 -- AUTORZY
 CREATE TABLE IF NOT EXISTS `Autorzy` (
-  `ID` INT,
+  `ID` INT auto_increment,
   `imię` VARCHAR(30),
   `nazwisko` VARCHAR(30),
   PRIMARY KEY (`ID`)

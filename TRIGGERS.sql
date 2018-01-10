@@ -91,10 +91,10 @@ BEGIN
 END;//
 DELIMITER ;
 
-
-/////////////czy nowa książka
-///todo
-
+-- 
+-- /////////////czy nowa książka
+-- ///todo
+-- 
 
 -- TRIGGER PRZED WSTAWIENIEM Autora CZY JUZ NIE ISTNIEJE
 DROP TRIGGER IF EXISTS sprawdzCzyNowyAutor;
@@ -130,44 +130,44 @@ IF EXISTS(  SELECT Działy.ID
 END IF;
 END//
 DELIMITER ;
-
+-- 
 -- TRIGGER WYWALAJACY AUTORA BEZ KSIAZEK
-DROP TRIGGER IF EXISTS usunAutoraBezKsiazek;
-DELIMITER //
-CREATE TRIGGER usunAutoraBezKsiazek
-AFTER DELETE ON Książki
-FOR EACH ROW 
-BEGIN
-DECLARE IDpom INT;
-IF (select count(*) from Książki where Książki.nazwisko = @nazwisko) = 0 then
-		///////tutaj tak samo if na imię
-        
-        /////////jakoś wiciągasz id z tego wiersza
-        IDpom=(SELECT ID FROM Autorzy Where OLD.nazwisko=@nazwisko);
-        /////// używasz istniejącego wywalacza wiersza
-		CALL usunWiersz(ID, `Autorzy`);
-    END IF;
-END//
-DELIMITER ;
-
+-- DROP TRIGGER IF EXISTS usunAutoraBezKsiazek;
+-- DELIMITER //
+-- CREATE TRIGGER usunAutoraBezKsiazek
+-- AFTER DELETE ON Książki
+-- FOR EACH ROW 
+-- BEGIN
+-- DECLARE IDpom INT;
+-- IF (select count(*) from Książki where Książki.nazwisko = @nazwisko) = 0 then
+-- 		///////tutaj tak samo if na imię
+--         
+--         /////////jakoś wiciągasz id z tego wiersza
+--         IDpom=(SELECT ID FROM Autorzy Where OLD.nazwisko=@nazwisko);
+--         /////// używasz istniejącego wywalacza wiersza
+-- 		CALL usunWiersz(ID, `Autorzy`);
+--     END IF;
+-- END//
+-- DELIMITER ;
+-- 
 -- TRGGER USUWAJĄCY DZIAŁ DO KTÓREGO NIE NALEŻĄ ŻADNE KSIĄŻKI
-///////// TODO
-
+-- ///////// TODO
+-- 
 -- TRIGGER DODAJACY AUTORA GDY POJAWIA SIE KSIAZKA
-DROP TRIGGER IF EXISTS dodajAutoraZksiazkami;
-DELIMITER //
-CREATE TRIGGER dodajAutoraZksiazkami
-AFTER INSERT ON Książki
-FOR EACH ROW 
-BEGIN
-//////////// PORÓWNUJ PO IMIĘ NAZWISKO W AUTOR A NIE ID W KSIĄŻKI
-//////// POWYŻEJ MASZ W WYWALAJ AUTORA BEZ KSIĄŻEK MNIEJ WIECEJ TO
-IF (select count(*) from Książki where Książki.autor = @autor) != 0 then
-		IF NOT EXISTS(select id from Autorzy where Autorzy.id = @autor) then
-        INSERT INTO `Autorzy` VALUES (0,imie,nazwisko);
-        END IF;
-END IF;
-END//
-DELIMITER ;
-
+-- DROP TRIGGER IF EXISTS dodajAutoraZksiazkami;
+-- DELIMITER //
+-- CREATE TRIGGER dodajAutoraZksiazkami
+-- AFTER INSERT ON Książki
+-- FOR EACH ROW 
+-- BEGIN
+-- //////////// PORÓWNUJ PO IMIĘ NAZWISKO W AUTOR A NIE ID W KSIĄŻKI
+-- //////// POWYŻEJ MASZ W WYWALAJ AUTORA BEZ KSIĄŻEK MNIEJ WIECEJ TO
+-- IF (select count(*) from Książki where Książki.autor = @autor) != 0 then
+-- 		IF NOT EXISTS(select id from Autorzy where Autorzy.id = @autor) then
+--         INSERT INTO `Autorzy` VALUES (0,imie,nazwisko);
+--         END IF;
+-- END IF;
+-- END//
+-- DELIMITER ;-- 
+-- 
 
