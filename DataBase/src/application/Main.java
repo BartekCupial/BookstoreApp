@@ -17,8 +17,6 @@ public class Main extends Application {
 
     public static Stage window;
     public static MyScene mainContainer;
-    public static String StartingSceneID = "start";
-    public static String StartingSceneFile = "/front/fxml/StartingScene.fxml";
     public static String LoginSceneID = "login";
     public static String LoginSceneFile = "/front/fxml/LoginScene.fxml";
     public static String AdminSceneID = "admin";
@@ -33,7 +31,6 @@ public class Main extends Application {
     public static String ResetPasswordSceneFile = "/front/fxml/ResetPasswordScene.fxml";
 
     public static void main(String[] args) {
-        //new Menu();
         launch(args);
     }
 
@@ -53,13 +50,10 @@ public class Main extends Application {
         });
 
         loadScreens();
-        loadImplementation();
         mainContainer.setScene(Main.LoginSceneID, window);
-
     }
 
     public static void closeProgram(){
-        //TODO: save data to enable coming back to the game
 //        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
 //        alert.setTitle("Confirmation");
 //        alert.setHeaderText("Look, a Confirmation Dialog");
@@ -73,7 +67,6 @@ public class Main extends Application {
     }
 
     private void loadScreens(){
-        mainContainer.loadScreen(Main.StartingSceneID, Main.StartingSceneFile);
         mainContainer.loadScreen(Main.LoginSceneID, Main.LoginSceneFile);
         mainContainer.loadScreen(Main.WorkerSceneID, Main.WorkerSceneFile);
         mainContainer.loadScreen(Main.ClientSceneID, Main.ClientSceneFile);
@@ -81,10 +74,4 @@ public class Main extends Application {
         mainContainer.loadScreen(Main.RegistrationSceneID, Main.RegistrationSceneFile);
         mainContainer.loadScreen(Main.ResetPasswordSceneID, Main.ResetPasswordSceneFile);
     }
-
-    private void loadImplementation(){
-
-
-    }
-
 }
