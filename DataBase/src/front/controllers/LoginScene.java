@@ -3,11 +3,13 @@ package front.controllers;
 import application.Main;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
+import implementation.AddressImplementation;
 import implementation.PeopleImplementation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.input.MouseEvent;
+import records.Address;
 import records.People;
 
 import java.net.URL;
@@ -22,7 +24,9 @@ public class LoginScene implements Initializable {
     private JFXPasswordField passwordText;
 
     PeopleImplementation peopleImplementation = new PeopleImplementation();
+    AddressImplementation addressImplementation = new AddressImplementation();
     People p;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         madeAdmin();
@@ -68,16 +72,20 @@ public class LoginScene implements Initializable {
 
     private void madeAdmin(){
         People admin = (People) peopleImplementation.selectById("Admin");
-        if(admin==null){
+
+        if(admin!=null){
+            Address address = new Address("Jamnikowa", "21", "44-111", "Legnica", "Slunskie", "Bieszczady");
+            int lastID = addressImplementation.insertint(address);
+            admin.setAddress(lastID);
             admin.setLogin("Admin");
             admin.setPassword("Admin");
-            admin.setMail("admin@gmail.com");
+            admin.setMail("sernikjamnika@gmail.com");
             admin.setPosition("Admin");
             admin.setPhone("666");
-            admin.setFirstName("Bartek");
+            admin.setFirstName("Mati");
             admin.setLastName("Admin");
-            admin.setAddress(0);
             peopleImplementation.insert(admin);
+            System.out.println("Admin made!");
         }
 
     }
