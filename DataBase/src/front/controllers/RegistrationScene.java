@@ -52,26 +52,23 @@ public class RegistrationScene implements Initializable {
     }
 
     public void registerButtonHandler(ActionEvent e) {
-        //TODO: wywalanie adresu z bazy, jeśli duplicate entry
         int lastID = 0;
         if(!passwordText.getText().equals(password1Text.getText())){
             System.out.println("different passwords");
             return;
         }
-
+        People person = (People) peopleImplementation.selectById(loginText.getText());
+        if(person!=null){
+            System.out.println("login already taken");
+            return;
+        }
         Address address = new Address(streetText.getText(), buildingNumberText.getText(), postalCodeText.getText(),
                 cityText.getText(), provinceText.getText(), countryText.getText());
         lastID = addressImplementation.insertint(address);
-
-
-        People person = new People(loginText.getText(), firstNameText.getText(), lastNameText.getText(),
+        person = new People(loginText.getText(), firstNameText.getText(), lastNameText.getText(),
                 lastID, phoneText.getText(), mailText.getText(), passwordText.getText(), "Klient" );
-
         peopleImplementation.insert(person);
-
         Main.mainContainer.setScene(Main.LoginSceneID, Main.window);
-
-
     }
 
     public void BackTextHandler(MouseEvent e) {
