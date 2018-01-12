@@ -49,4 +49,13 @@ public class RecordAdapter implements Record{
     public void update(AbstractRecord record) {
 
     }
+
+    @Override
+    public int insertint(AbstractRecord record){
+        return 0;
+    }
+
+
+
+
 }

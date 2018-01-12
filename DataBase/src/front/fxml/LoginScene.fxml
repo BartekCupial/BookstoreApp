@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.geometry.*?>
 <?import com.jfoenix.controls.*?>
 <?import javafx.scene.text.*?>
@@ -9,13 +10,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="660.0" style="-fx-background-color: #4CCBE;" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="front.controllers.LoginScene">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" prefHeight="640.0" prefWidth="660.0" styleClass="root" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="front.controllers.LoginScene">
    <children>
       <AnchorPane layoutX="69.0" layoutY="112.0" prefHeight="456.0" prefWidth="522.0" styleClass="card">
          <children>
-            <Pane layoutX="58.0" layoutY="-50.0" prefHeight="100.0" prefWidth="400.0" style="-fx-background-color: #2bbbab;" styleClass="card">
+            <Pane layoutX="58.0" layoutY="-37.0" prefHeight="87.0" prefWidth="400.0" style="-fx-background-color: #2bbbab;" styleClass="card">
                <children>
-                  <Label layoutX="156.0" layoutY="33.0" text="Login :" textFill="WHITE">
+                  <Label layoutX="156.0" layoutY="26.0" text="Login :" textFill="WHITE">
                      <font>
                         <Font name="Roboto Bold" size="29.0" />
                      </font>
@@ -24,12 +25,12 @@
             </Pane>
             <VBox layoutX="108.0" layoutY="108.0" prefHeight="137.0" prefWidth="320.0" spacing="20.0">
                <children>
-                  <JFXTextField focusColor="#2bbbab" layoutX="108.0" layoutY="108.0" maxWidth="300.0" minWidth="290.0" prefHeight="35.0" prefWidth="300.0" promptText="Login" unFocusColor="#9e9e9e">
+                  <JFXTextField fx:id="loginText" focusColor="#2bbbab" layoutX="108.0" layoutY="108.0" maxWidth="300.0" minWidth="290.0" prefHeight="35.0" prefWidth="300.0" promptText="Login" unFocusColor="#9e9e9e">
                      <font>
                         <Font name="Roboto Bold" size="13.0" />
                      </font>
                   </JFXTextField>
-                  <JFXPasswordField focusColor="#2bbbab" layoutX="108.0" layoutY="169.0" maxWidth="300.0" minWidth="220.0" prefHeight="35.0" prefWidth="381.0" promptText="Password" unFocusColor="#9e9e9e">
+                  <JFXPasswordField fx:id="passwordText" focusColor="#2bbbab" layoutX="108.0" layoutY="169.0" maxWidth="300.0" minWidth="220.0" prefHeight="35.0" prefWidth="381.0" promptText="Password" unFocusColor="#9e9e9e">
                      <font>
                         <Font name="Roboto Bold" size="13.0" />
                      </font>
@@ -39,7 +40,7 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
                </padding>
             </VBox>
-            <Separator layoutX="56.0" layoutY="265.0" prefHeight="7.0" prefWidth="410.0" />
+            <Separator layoutX="63.0" layoutY="328.0" prefHeight="7.0" prefWidth="410.0" />
             <VBox layoutX="293.0" layoutY="354.0">
                <children>
                   <HBox layoutX="258.0" layoutY="306.0" prefHeight="30.0" prefWidth="165.0" spacing="10.0">
@@ -49,7 +50,7 @@
                               <Font name="Roboto Bold" size="13.0" />
                            </font>
                         </Label>
-                        <Label fx:id="passwordLabel" layoutX="315.0" layoutY="306.0" prefHeight="30.0" prefWidth="94.0" text="password?" textFill="#1b1da1">
+                        <Label fx:id="passwordLabel" layoutX="315.0" layoutY="306.0" onMouseClicked="#passwordHandler" prefHeight="30.0" prefWidth="94.0" text="password?" textFill="#1b1da1">
                            <font>
                               <Font name="Roboto Bold" size="13.0" />
                            </font>
@@ -63,7 +64,7 @@
                               <Font name="Roboto Bold" size="13.0" />
                            </font>
                         </Label>
-                        <Label layoutX="315.0" layoutY="306.0" prefHeight="30.0" prefWidth="89.0" text="Sign up" textFill="#1b1da1">
+                        <Label fx:id="registrationLabel" layoutX="315.0" layoutY="306.0" onMouseClicked="#registrationHandler" prefHeight="30.0" prefWidth="89.0" text="Sign up" textFill="#1b1da1">
                            <font>
                               <Font name="Roboto Bold" size="13.0" />
                            </font>
@@ -72,12 +73,20 @@
                   </HBox>
                </children>
             </VBox>
-            <JFXButton layoutX="177.0" layoutY="286.0" prefHeight="52.0" prefWidth="182.0" style="-fx-background-color: #2bbbab;" text="Go West!" textFill="WHITE">
+            <JFXButton fx:id="nextButton" layoutX="73.0" layoutY="245.0" onAction="#NextButtonHandler" prefHeight="52.0" prefWidth="165.0" style="-fx-background-color: #2bbbab;" text="Next" textFill="WHITE">
+               <font>
+                  <Font name="Roboto Bold" size="26.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="exitButton" layoutX="285.0" layoutY="245.0" onAction="#exitButtonHandler" prefHeight="52.0" prefWidth="165.0" style="-fx-background-color: #2bbbab;" text="Exit" textFill="WHITE">
                <font>
                   <Font name="Roboto Bold" size="26.0" />
                </font>
             </JFXButton>
          </children>
+         <effect>
+            <Shadow />
+         </effect>
       </AnchorPane>
    </children>
 </AnchorPane>

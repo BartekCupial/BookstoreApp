@@ -1,15 +1,19 @@
 package front;
 
 
+import application.Main;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.util.HashMap;
 
 public class MyScene {
-
+    private double xOffset = 0;
+    private double yOffset = 0;
 
     private HashMap<String, Scene> scenes = new HashMap<>();
 
@@ -29,6 +33,20 @@ public class MyScene {
         try{
             FXMLLoader myLoader = new FXMLLoader(getClass().getResource(resource));
             Parent loadScene = (Parent) myLoader.load();
+//            loadScene.setOnMouseClicked(new EventHandler<MouseEvent>() {
+//                @Override
+//                public void handle(MouseEvent event) {
+//                    xOffset = event.getSceneX();
+//                    yOffset = event.getSceneY();
+//                }
+//            });
+//            loadScene.setOnMouseDragged(new EventHandler<MouseEvent>() {
+//                @Override
+//                public void handle(MouseEvent event) {
+//                    Main.window.setX(event.getScreenX() - xOffset);
+//                    Main.window.setY(event.getScreenY() - yOffset);
+//                }
+//            });
             Scene scene = new Scene(loadScene);
             addScene(name, scene);
             return true;
@@ -44,7 +62,7 @@ public class MyScene {
         if(scenes.get(name) != null){ //scene loaded
             //TODO: make opacity etc
             stage.setScene(scenes.get(name));
-            stage.centerOnScreen();
+            //stage.centerOnScreen();
             stage.show();
             return true;
         }else {

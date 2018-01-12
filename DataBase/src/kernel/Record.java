@@ -6,6 +6,8 @@ public interface Record {
 
     void insert(AbstractRecord record);
 
+    int insertint(AbstractRecord record);
+
     AbstractRecord selectById(int id);
 
     AbstractRecord selectById(String id);
@@ -21,4 +23,5 @@ public interface Record {
     void update(AbstractRecord record, String id);
 
     void update(AbstractRecord record);
+
 }
