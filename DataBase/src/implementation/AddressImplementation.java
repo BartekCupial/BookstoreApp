@@ -11,15 +11,15 @@ import java.util.List;
 
 public class AddressImplementation extends RecordAdapter{
     @Override
-    public void insert(AbstractRecord record) {
+    public int insertint(AbstractRecord record) {
         Address address = (Address) record;
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-
+        int generatedKey = 0;
         try{
             connection = DBConnect.getConnection();
             preparedStatement = connection.prepareStatement("INSERT INTO Adresy (ID, ulica, numerLokalu, kodPocztowy, miejscowosc, wojewodztwo, kraj)" +
-                    "VALUES (?, ?, ?, ?, ? ,?, ?)");
+                    "VALUES (?, ?, ?, ?, ? ,?, ?)", Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setInt(1, address.getID());
             preparedStatement.setString(2, address.getStreet());
             preparedStatement.setString(3, address.getBuildingNumber());
@@ -30,7 +30,10 @@ public class AddressImplementation extends RecordAdapter{
 
 
             preparedStatement.executeUpdate();
-
+            ResultSet resultSet = preparedStatement.getGeneratedKeys();
+            if(resultSet.next()){
+                generatedKey = resultSet.getInt(1);
+            }
             System.out.println("INSERT INTO Adresy (ID, ulica, numerLokalu, kodPocztowy, miejscowosc, wojewodztwo, kraj)" +
                     "VALUES (?, ?, ?, ?, ? ,?, ?)");
         }catch (Exception e){
@@ -52,6 +55,7 @@ public class AddressImplementation extends RecordAdapter{
                 }
             }
         }
+        return generatedKey;
     }
 
     @Override
@@ -233,4 +237,5 @@ public class AddressImplementation extends RecordAdapter{
             }
         }
     }
+
 }
