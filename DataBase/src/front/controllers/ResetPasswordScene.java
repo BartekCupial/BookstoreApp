@@ -44,9 +44,10 @@ public class ResetPasswordScene implements Initializable {
         People people = (People) peopleImplementation.selectById(loginText.getText());
 
         if(!people.getMail().equals(mailText.getText()) || !people.getLogin().equals(loginText.getText())){
-            System.out.println("wrong login &| mail");
+            System.out.println("wrong login and/or mail");
             return;
         }
+        people.setPassword(passwordText.getText());
         peopleImplementation.update(people,loginText.getText());
 
         Main.mainContainer.setScene(Main.LoginSceneID, Main.window);

@@ -69,14 +69,14 @@ public class PeopleImplementation extends RecordAdapter {
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                person.setFirstName(resultSet.getString("firstName"));
-                person.setLastName(resultSet.getString("lastName"));
-                person.setAddress(resultSet.getInt("address"));
-                person.setPhone(resultSet.getString("phone"));
-                person.setMail(resultSet.getString("mail"));
-                person.setLogin(resultSet.getString("login"));
-                person.setPassword(resultSet.getString("password"));
-                person.setPosition(resultSet.getString("position"));
+                person.setFirstName(resultSet.getString(1));
+                person.setLastName(resultSet.getString(2));
+                person.setAddress(resultSet.getInt(3));
+                person.setPhone(resultSet.getString(4));
+                person.setMail(resultSet.getString(5));
+                person.setLogin(resultSet.getString(6));
+                person.setPassword(resultSet.getString(7));
+                person.setPosition(resultSet.getString(8));
             }
 
         } catch (Exception e) {
@@ -122,14 +122,14 @@ public class PeopleImplementation extends RecordAdapter {
 
             while (resultSet.next()) {
                 People person = new People();
-                person.setFirstName(resultSet.getString("firstName"));
-                person.setLastName(resultSet.getString("lastName"));
-                person.setAddress(resultSet.getInt("address"));
-                person.setPhone(resultSet.getString("phone"));
-                person.setMail(resultSet.getString("mail"));
-                person.setLogin(resultSet.getString("login"));
-                person.setPassword(resultSet.getString("password"));
-                person.setPosition(resultSet.getString("position"));
+                person.setFirstName(resultSet.getString(1));
+                person.setLastName(resultSet.getString(2));
+                person.setAddress(resultSet.getInt(3));
+                person.setPhone(resultSet.getString(4));
+                person.setMail(resultSet.getString(5));
+                person.setLogin(resultSet.getString(6));
+                person.setPassword(resultSet.getString(7));
+                person.setPosition(resultSet.getString(8));
 
                 people.add(person);
             }
