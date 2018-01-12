@@ -17,8 +17,14 @@ public class Main extends Application {
     public static MyScene mainContainer;
     public static String StartingSceneID = "start";
     public static String StartingSceneFile = "/front/fxml/StartingScene.fxml";
-
-
+    public static String LoginSceneID = "login";
+    public static String LoginSceneFile = "/front/fxml/LoginScene.fxml";
+    public static String AdminSceneID = "admin";
+    public static String AdminSceneFile = "/front/fxml/AdminPanelScene.fxml";
+    public static String ClientSceneID = "client";
+    public static String ClientSceneFile = "/front/fxml/ClientPanelScene.fxml";
+    public static String WorkerSceneID = "worker";
+    public static String WorkerSceneFile = "/front/fxml/WorkerPanelScene.fxml";
 
     public static void main(String[] args) {
         //new Menu();
@@ -34,15 +40,20 @@ public class Main extends Application {
         //window.getStylesheets().add("Sample/test.css");
         window.setResizable(false);
         window.setTitle("Chinese-checkers");
-        window.setOnCloseRequest(e -> {
-            e.consume();
-            closeProgram();
-        });
+//        window.setOnCloseRequest(e -> {
+//            e.consume();
+//            closeProgram();
+//        });
 
         mainContainer.loadScreen(Main.StartingSceneID, Main.StartingSceneFile);
+        mainContainer.loadScreen(Main.LoginSceneID, Main.LoginSceneFile);
+        mainContainer.loadScreen(Main.WorkerSceneID, Main.WorkerSceneFile);
+        mainContainer.loadScreen(Main.ClientSceneID, Main.ClientSceneFile);
+        mainContainer.loadScreen(Main.AdminSceneID, Main.AdminSceneFile);
 
 
-        mainContainer.setScene(Main.StartingSceneID, window);
+
+        mainContainer.setScene(Main.LoginSceneID, window);
 
     }
 
