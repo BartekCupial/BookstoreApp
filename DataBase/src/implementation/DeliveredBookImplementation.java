@@ -63,10 +63,10 @@ public class DeliveredBookImplementation extends RecordAdapter{
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                deliveredBook.setID(resultSet.getInt("ID"));
-                deliveredBook.setISBN(resultSet.getString("ISBN"));
-                deliveredBook.setDeliveryID(resultSet.getInt("deliveryID"));
-                deliveredBook.setNumber(resultSet.getInt("number"));
+                deliveredBook.setID(resultSet.getInt(1));
+                deliveredBook.setISBN(resultSet.getString(2));
+                deliveredBook.setDeliveryID(resultSet.getInt(3));
+                deliveredBook.setNumber(resultSet.getInt(4));
             }
 
         } catch (Exception e) {
@@ -112,10 +112,10 @@ public class DeliveredBookImplementation extends RecordAdapter{
 
             while (resultSet.next()) {
                 DeliveredBook deliveredBook = new DeliveredBook();
-                deliveredBook.setID(resultSet.getInt("ID"));
-                deliveredBook.setISBN(resultSet.getString("IN"));
-                deliveredBook.setDeliveryID(resultSet.getInt("deliveryID"));
-                deliveredBook.setNumber(resultSet.getInt("number"));
+                deliveredBook.setID(resultSet.getInt(1));
+                deliveredBook.setISBN(resultSet.getString(2));
+                deliveredBook.setDeliveryID(resultSet.getInt(3));
+                deliveredBook.setNumber(resultSet.getInt(4));
                 deliveredBooks.add(deliveredBook);
             }
 

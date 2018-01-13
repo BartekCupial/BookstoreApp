@@ -63,10 +63,10 @@ public class OrderedBookImplementation extends RecordAdapter{
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                orderedBook.setID(resultSet.getInt("ID"));
-                orderedBook.setISBN(resultSet.getString("ISBN"));
-                orderedBook.setOrderID(resultSet.getInt("orderID"));
-                orderedBook.setNumber(resultSet.getInt("number"));
+                orderedBook.setID(resultSet.getInt(1));
+                orderedBook.setISBN(resultSet.getString(2));
+                orderedBook.setOrderID(resultSet.getInt(3));
+                orderedBook.setNumber(resultSet.getInt(4));
             }
 
         } catch (Exception e) {
@@ -112,10 +112,10 @@ public class OrderedBookImplementation extends RecordAdapter{
 
             while (resultSet.next()) {
                 OrderedBook orderedBook = new OrderedBook();
-                orderedBook.setID(resultSet.getInt("ID"));
-                orderedBook.setISBN(resultSet.getString("IN"));
-                orderedBook.setOrderID(resultSet.getInt("orderID"));
-                orderedBook.setNumber(resultSet.getInt("number"));
+                orderedBook.setID(resultSet.getInt(1));
+                orderedBook.setISBN(resultSet.getString(2));
+                orderedBook.setOrderID(resultSet.getInt(3));
+                orderedBook.setNumber(resultSet.getInt(4));
                 orderedBooks.add(orderedBook);
             }
 

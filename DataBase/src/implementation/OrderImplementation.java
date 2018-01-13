@@ -11,20 +11,25 @@ import java.util.List;
 
 public class OrderImplementation extends RecordAdapter{
     @Override
-    public void insert(AbstractRecord record) {
+    public int insertint(AbstractRecord record) {
         Order order = (Order) record;
         Connection connection = null;
         PreparedStatement preparedStatement = null;
-
+        int generatedKey = 0;
         try{
             connection = DBConnect.getConnection();
             preparedStatement = connection.prepareStatement("INSERT INTO Zamowienia (ID,IDzamawiajacego,dataZamowienia,statusZamowienia)" +
-                    "VALUES (?, ?, ?, ?)");
+                    "VALUES (?, ?, ?, ?)", Statement.RETURN_GENERATED_KEYS);
             preparedStatement.setInt(1, order.getID());
             preparedStatement.setString(2, order.getOrderID());
             preparedStatement.setString(3, order.getDate());
             preparedStatement.setString(4, order.getStatus());
+
             preparedStatement.executeUpdate();
+            ResultSet resultSet = preparedStatement.getGeneratedKeys();
+            if(resultSet.next()){
+                generatedKey = resultSet.getInt(1);
+            }
 
             System.out.println("INSERT INTO Zamowienia (ID,IDzamawiajacego,dataZamowienia,`statusZamówienia`)" +
                     "VALUES (?, ?, ?, ?)");
@@ -47,6 +52,7 @@ public class OrderImplementation extends RecordAdapter{
                 }
             }
         }
+        return generatedKey;
     }
 
     @Override
@@ -63,10 +69,10 @@ public class OrderImplementation extends RecordAdapter{
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                order.setID(resultSet.getInt("ID"));
-                order.setOrderID(resultSet.getString("orderID"));
-                order.setDate(resultSet.getString("date"));
-                order.setStatus(resultSet.getString("status"));
+                order.setID(resultSet.getInt(1));
+                order.setOrderID(resultSet.getString(2));
+                order.setDate(resultSet.getString(3));
+                order.setStatus(resultSet.getString(4));
             }
 
         } catch (Exception e) {
@@ -112,10 +118,10 @@ public class OrderImplementation extends RecordAdapter{
 
             while (resultSet.next()) {
                 Order order = new Order();
-                order.setID(resultSet.getInt("ID"));
-                order.setOrderID(resultSet.getString("orderID"));
-                order.setDate(resultSet.getString("date"));
-                order.setStatus(resultSet.getString("status"));
+                order.setID(resultSet.getInt(1));
+                order.setOrderID(resultSet.getString(2));
+                order.setDate(resultSet.getString(3));
+                order.setStatus(resultSet.getString(4));
                 orders.add(order);
             }
 

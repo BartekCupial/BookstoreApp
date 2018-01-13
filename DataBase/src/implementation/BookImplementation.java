@@ -69,15 +69,15 @@ public class BookImplementation extends RecordAdapter{
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                book.setISBN(resultSet.getString("ISBN"));
-                book.setTitle(resultSet.getString("title"));
-                book.setAuthor(resultSet.getInt("author"));
-                book.setSection(resultSet.getInt("section"));
-                book.setNumber(resultSet.getInt("number"));
-                book.setPublished(resultSet.getString("published"));
-                book.setYear(resultSet.getInt("year"));
-                book.setPrice(resultSet.getInt("price"));
-                book.setDescription(resultSet.getString("description"));
+                book.setISBN(resultSet.getString(1));
+                book.setTitle(resultSet.getString(2));
+                book.setAuthor(resultSet.getInt(3));
+                book.setSection(resultSet.getInt(4));
+                book.setNumber(resultSet.getInt(5));
+                book.setPublished(resultSet.getString(6));
+                book.setYear(resultSet.getInt(7));
+                book.setPrice(resultSet.getInt(8));
+                book.setDescription(resultSet.getString(9));
             }
 
         } catch (Exception e) {
@@ -123,15 +123,15 @@ public class BookImplementation extends RecordAdapter{
 
             while (resultSet.next()) {
                 Book book = new Book();
-                book.setISBN(resultSet.getString("ISBN"));
-                book.setTitle(resultSet.getString("title"));
-                book.setAuthor(resultSet.getInt("author"));
-                book.setSection(resultSet.getInt("section"));
-                book.setNumber(resultSet.getInt("number"));
-                book.setPublished(resultSet.getString("published"));
-                book.setYear(resultSet.getInt("year"));
-                book.setPrice(resultSet.getInt("price"));
-                book.setDescription(resultSet.getString("description"));
+                book.setISBN(resultSet.getString(1));
+                book.setTitle(resultSet.getString(2));
+                book.setAuthor(resultSet.getInt(3));
+                book.setSection(resultSet.getInt(4));
+                book.setNumber(resultSet.getInt(5));
+                book.setPublished(resultSet.getString(6));
+                book.setYear(resultSet.getInt(7));
+                book.setPrice(resultSet.getInt(8));
+                book.setDescription(resultSet.getString(9));
 
                 books.add(book);
             }

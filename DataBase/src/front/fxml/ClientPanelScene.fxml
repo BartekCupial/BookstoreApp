@@ -1,14 +1,203 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import javafx.geometry.*?>
+<?import com.jfoenix.validation.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="front.controllers.ClientPanelScene"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="560.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="front.controllers.ClientPanelScene">
+    <children>
+      <HBox layoutX="154.0" layoutY="479.0" spacing="20.0">
+         <children>
+            <JFXButton layoutX="208.0" layoutY="479.0" onMouseClicked="#ClearBasketHandler" prefHeight="52.0" prefWidth="166.0" style="-fx-background-color: #3B6BC3;" text="Clear Basket" textFill="WHITE">
+               <font>
+                  <Font name="Roboto Bold" size="20.0" />
+               </font>
+            </JFXButton>
+              <JFXButton layoutX="389.0" layoutY="479.0" onMouseClicked="#AddToBasketHandler" prefHeight="52.0" prefWidth="166.0" style="-fx-background-color: #3B6BC3;" text="Add To Basket" textFill="WHITE">
+                  <font>
+                      <Font name="Roboto Bold" size="20.0" />
+                  </font>
+              </JFXButton>
+            <JFXButton layoutX="569.0" layoutY="479.0" onMouseClicked="#OrderHandler" prefHeight="52.0" prefWidth="97.0" style="-fx-background-color: #3B6BC3;" text="Order" textFill="WHITE">
+               <font>
+                  <Font name="Roboto Bold" size="20.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </HBox>
+        <Pane layoutX="166.0" layoutY="14.0" prefHeight="52.0" prefWidth="368.0" style="-fx-background-color: #3B6BC3;" styleClass="card">
+            <children>
+                <Label layoutX="104.0" layoutY="9.0" text="Client Panel" textFill="WHITE">
+                    <font>
+                        <Font name="Roboto Bold" size="29.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+        <Pane prefHeight="560.0" prefWidth="110.0" style="-fx-background-color: #3B6BC3;">
+         <children>
+            <VBox layoutY="35.0" spacing="20.0">
+               <children>
+                  <Text fill="WHITE" layoutX="7.0" layoutY="50.0" onMouseClicked="#LogoutTextHandler" strokeType="OUTSIDE" strokeWidth="0.0" text="Logout" textAlignment="CENTER" wrappingWidth="96.7294921875">
+                     <font>
+                        <Font name="Roboto Bold" size="29.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutY="98.0" onMouseClicked="#ChangeDataTextHandler" strokeType="OUTSIDE" strokeWidth="0.0" text="Change data" textAlignment="CENTER" wrappingWidth="110.0">
+                     <font>
+                        <Font name="Roboto Bold" size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+         </children></Pane>
+      <TabPane layoutX="166.0" layoutY="82.0" prefHeight="397.0" prefWidth="445.0" tabClosingPolicy="UNAVAILABLE">
+        <tabs>
+            <Tab fx:id="tabBooks" onSelectionChanged="#BooksHandler" text="Books">
+               <content>
+                  <TableView fx:id="booksTable" onMouseClicked="#ClickTableHandler" prefHeight="200.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+            <Tab fx:id="tabSections" onSelectionChanged="#SectionsHandler" text="Sections">
+               <content>
+                  <TableView fx:id="sectionsTable" prefHeight="200.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+            <Tab fx:id="tabAuthors" onSelectionChanged="#AuthorsHandler" text="Authors">
+               <content>
+                  <TableView fx:id="authorsTable" prefHeight="200.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+          <Tab fx:id="tabOrders" onSelectionChanged="#OrdersHandler" text="Orders">
+               <content>
+                  <TableView fx:id="ordersTable" prefHeight="200.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+            <Tab fx:id="tabBasket" onSelectionChanged="#BasketHandler" text="Basket">
+               <content>
+                  <TableView fx:id="basketTable" prefHeight="200.0" prefWidth="200.0" />
+               </content>
+            </Tab>
+          <Tab fx:id="tabData" onSelectionChanged="#YourDataHandler" text="Your Data">
+               <content>
+                  <HBox prefHeight="365.0" prefWidth="445.0">
+                     <children>
+                        <VBox prefHeight="316.0" prefWidth="225.0" spacing="10.0">
+                           <children>
+                              <Label text="Mail" />
+                              <Text fx:id="textMail" smooth="false" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="126.7294921875">
+                                 <font>
+                                    <Font size="23.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <Label text="Street" />
+                              <Text fx:id="textStreet" smooth="false" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="133.619140625">
+                                 <font>
+                                    <Font size="23.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <Label text="Province" />
+                              <Text fx:id="textProvince" smooth="false" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="130.619140625">
+                                 <font>
+                                    <Font size="23.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <Label text="Country" />
+                              <Text fx:id="textCountry" smooth="false" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="135.619140625">
+                                 <font>
+                                    <Font size="23.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <Label text="Postal number" />
+                              <Text fx:id="textPostal" smooth="false" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="133.619140625">
+                                 <font>
+                                    <Font size="23.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </Text>
+                           </children>
+                           <padding>
+                              <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+                           </padding>
+                        </VBox>
+                        <VBox layoutX="10.0" layoutY="10.0" prefHeight="316.0" prefWidth="225.0" spacing="10.0">
+                           <children>
+                              <Label text="First Name" />
+                              <Text fx:id="textFirst" smooth="false" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="141.619140625">
+                                 <font>
+                                    <Font size="23.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <Label text="Last Name" />
+                              <Text fx:id="textLast" smooth="false" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="137.619140625">
+                                 <font>
+                                    <Font size="23.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <Label text="Phone" />
+                              <Text fx:id="textPhone" smooth="false" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="140.619140625">
+                                 <font>
+                                    <Font size="23.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <Label text="Building Number" />
+                              <Text fx:id="textBuilding" smooth="false" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="131.619140625">
+                                 <font>
+                                    <Font size="23.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </Text>
+                              <Label text="City" />
+                              <Text fx:id="textCity" smooth="false" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="144.619140625">
+                                 <font>
+                                    <Font size="23.0" />
+                                 </font>
+                                 <VBox.margin>
+                                    <Insets left="20.0" />
+                                 </VBox.margin>
+                              </Text>
+                           </children>
+                           <padding>
+                              <Insets bottom="40.0" left="40.0" right="40.0" top="40.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </content>
+            </Tab>
+        </tabs>
+      </TabPane>
+    </children>
 </AnchorPane>

@@ -72,13 +72,13 @@ public class AddressImplementation extends RecordAdapter{
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                address.setID(resultSet.getInt("ID"));
-                address.setStreet(resultSet.getString("street"));
-                address.setBuildingNumber(resultSet.getString("buildingNumber"));
-                address.setPostalCode(resultSet.getString("postalCode"));
-                address.setCity(resultSet.getString("city"));
-                address.setProvince(resultSet.getString("province"));
-                address.setCountry(resultSet.getString("country"));
+                address.setID(resultSet.getInt(1));
+                address.setStreet(resultSet.getString(2));
+                address.setBuildingNumber(resultSet.getString(3));
+                address.setPostalCode(resultSet.getString(4));
+                address.setCity(resultSet.getString(5));
+                address.setProvince(resultSet.getString(6));
+                address.setCountry(resultSet.getString(7));
             }
 
         } catch (Exception e) {
@@ -124,13 +124,13 @@ public class AddressImplementation extends RecordAdapter{
 
             while (resultSet.next()) {
                 Address address = new Address();
-                address.setID(resultSet.getInt("ID"));
-                address.setStreet(resultSet.getString("street"));
-                address.setBuildingNumber(resultSet.getString("buildingNumber"));
-                address.setPostalCode(resultSet.getString("postalCode"));
-                address.setCity(resultSet.getString("city"));
-                address.setProvince(resultSet.getString("province"));
-                address.setCountry(resultSet.getString("country"));
+                address.setID(resultSet.getInt(1));
+                address.setStreet(resultSet.getString(2));
+                address.setBuildingNumber(resultSet.getString(3));
+                address.setPostalCode(resultSet.getString(4));
+                address.setCity(resultSet.getString(5));
+                address.setProvince(resultSet.getString(6));
+                address.setCountry(resultSet.getString(7));
 
                 addresses.add(address);
             }

@@ -62,9 +62,9 @@ public class AuthorImplementation extends RecordAdapter{
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                author.setID(resultSet.getInt("ID"));
-                author.setFirstName(resultSet.getString("firstName"));
-                author.setLastName((resultSet.getString("lastName")));
+                author.setID(resultSet.getInt(1));
+                author.setFirstName(resultSet.getString(2));
+                author.setLastName((resultSet.getString(3)));
 
             }
 
@@ -111,9 +111,9 @@ public class AuthorImplementation extends RecordAdapter{
 
             while (resultSet.next()) {
                 Author author = new Author();
-                author.setID(resultSet.getInt("ID"));
-                author.setFirstName(resultSet.getString("firstName"));
-                author.setLastName(resultSet.getString("lastName"));
+                author.setID(resultSet.getInt(1));
+                author.setFirstName(resultSet.getString(2));
+                author.setLastName(resultSet.getString(3));
 
                 authors.add(author);
             }

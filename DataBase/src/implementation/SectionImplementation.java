@@ -61,8 +61,8 @@ public class SectionImplementation extends RecordAdapter {
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                section.setID(resultSet.getInt("ID"));
-                section.setName(resultSet.getString("name"));
+                section.setID(resultSet.getInt(1));
+                section.setName(resultSet.getString(2));
 
             }
 
@@ -109,8 +109,8 @@ public class SectionImplementation extends RecordAdapter {
 
             while (resultSet.next()) {
                 Section section = new Section();
-                section.setID(resultSet.getInt("ID"));
-                section.setName(resultSet.getString("name"));
+                section.setID(resultSet.getInt(1));
+                section.setName(resultSet.getString(2));
 
 
                 sections.add(section);

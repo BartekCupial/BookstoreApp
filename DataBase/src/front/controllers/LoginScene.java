@@ -23,9 +23,11 @@ public class LoginScene implements Initializable {
     @FXML
     private JFXPasswordField passwordText;
 
-    PeopleImplementation peopleImplementation = new PeopleImplementation();
-    AddressImplementation addressImplementation = new AddressImplementation();
-    People p;
+    public static String userID;
+
+    private PeopleImplementation peopleImplementation = new PeopleImplementation();
+    private AddressImplementation addressImplementation = new AddressImplementation();
+    People people;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -36,26 +38,22 @@ public class LoginScene implements Initializable {
         loginText.getText();
         passwordText.getText();
 
-        p = (People) peopleImplementation.selectById(loginText.getText());
-        if(p==null){
+        people = (People) peopleImplementation.selectById(loginText.getText());
+        if(people==null){
             System.out.println("wrong password or login");
             return;
         }
-        if(!p.getPassword().equals(passwordText.getText())){
+        if(!people.getPassword().equals(passwordText.getText())){
             System.out.println("wrong password or login");
             return;
         }
-        switch (p.getPosition()) {
-            case "Admin":
-                Main.mainContainer.setScene(Main.AdminSceneID, Main.window);
-                break;
-            case "Pracownik":
-                Main.mainContainer.setScene(Main.WorkerSceneID, Main.window);
-                break;
-            case "Klient":
-                Main.mainContainer.setScene(Main.ClientSceneID, Main.window);
-                break;
-        }
+
+        userID = loginText.getText();
+
+        loginText.setText("");
+        passwordText.setText("");
+        SwitchReturn(people);
+
     }
 
     public void registrationHandler(MouseEvent e) {
@@ -72,8 +70,7 @@ public class LoginScene implements Initializable {
 
     private void madeAdmin(){
         People admin = (People) peopleImplementation.selectById("Admin");
-
-        if(admin!=null){
+        if(!admin.getLogin().equals("Admin")){
             Address address = new Address("Jamnikowa", "21", "44-111", "Legnica", "Slunskie", "Bieszczady");
             int lastID = addressImplementation.insertint(address);
             admin.setAddress(lastID);
@@ -88,5 +85,19 @@ public class LoginScene implements Initializable {
             System.out.println("Admin made!");
         }
 
+    }
+
+    public static void SwitchReturn(People people){
+        switch (people.getPosition()) {
+            case "Admin":
+                Main.mainContainer.setScene(Main.AdminSceneID, Main.window);
+                break;
+            case "Pracownik":
+                Main.mainContainer.setScene(Main.WorkerSceneID, Main.window);
+                break;
+            case "Klient":
+                Main.mainContainer.setScene(Main.ClientSceneID, Main.window);
+                break;
+        }
     }
 }

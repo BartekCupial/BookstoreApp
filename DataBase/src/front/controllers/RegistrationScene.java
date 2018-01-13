@@ -52,7 +52,7 @@ public class RegistrationScene implements Initializable {
     }
 
     public void registerButtonHandler(ActionEvent e) {
-        int lastID = 0;
+        int lastID;
         if(!passwordText.getText().equals(password1Text.getText())){
             System.out.println("different passwords");
             return;
@@ -68,10 +68,29 @@ public class RegistrationScene implements Initializable {
         person = new People(loginText.getText(), firstNameText.getText(), lastNameText.getText(),
                 lastID, phoneText.getText(), mailText.getText(), passwordText.getText(), "Klient" );
         peopleImplementation.insert(person);
+
+        setComponentsToNull();
+
         Main.mainContainer.setScene(Main.LoginSceneID, Main.window);
     }
 
     public void BackTextHandler(MouseEvent e) {
         Main.mainContainer.setScene(Main.LoginSceneID, Main.window);
+    }
+
+    public void setComponentsToNull(){
+        loginText.setText("");
+        mailText.setText("");
+        firstNameText.setText("");
+        lastNameText.setText("");
+        phoneText.setText("");
+        streetText.setText("");
+        buildingNumberText.setText("");
+        cityText.setText("");
+        provinceText.setText("");
+        countryText.setText("");
+        postalCodeText.setText("");
+        password1Text.setText("");
+        passwordText.setText("");
     }
 }

@@ -69,14 +69,14 @@ public class ProvidersImplementation extends RecordAdapter{
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                person.setNIP(resultSet.getString("NIP"));
-                person.setCompanyName(resultSet.getString("companyName"));
-                person.setOwnerFirstName(resultSet.getString("ownerFirstName"));
-                person.setOwnerLastName(resultSet.getString("ownerLastName"));
-                person.setAddress(resultSet.getInt("address"));
-                person.setPhone(resultSet.getString("phone"));
-                person.setMail(resultSet.getString("mail"));
-                person.setAccountNumber(resultSet.getString("accountNumber"));
+                person.setNIP(resultSet.getString(1));
+                person.setCompanyName(resultSet.getString(2));
+                person.setOwnerFirstName(resultSet.getString(3));
+                person.setOwnerLastName(resultSet.getString(4));
+                person.setAddress(resultSet.getInt(5));
+                person.setPhone(resultSet.getString(6));
+                person.setMail(resultSet.getString(7));
+                person.setAccountNumber(resultSet.getString(8));
             }
 
         } catch (Exception e) {
@@ -122,14 +122,14 @@ public class ProvidersImplementation extends RecordAdapter{
 
             while (resultSet.next()) {
                 Providers person = new Providers();
-                person.setNIP(resultSet.getString("NIP"));
-                person.setCompanyName(resultSet.getString("companyName"));
-                person.setOwnerFirstName(resultSet.getString("ownerFirstName"));
-                person.setOwnerLastName(resultSet.getString("ownerLastName"));
-                person.setAddress(resultSet.getInt("address"));
-                person.setPhone(resultSet.getString("phone"));
-                person.setMail(resultSet.getString("mail"));
-                person.setAccountNumber(resultSet.getString("accountNumber"));
+                person.setNIP(resultSet.getString(1));
+                person.setCompanyName(resultSet.getString(2));
+                person.setOwnerFirstName(resultSet.getString(3));
+                person.setOwnerLastName(resultSet.getString(4));
+                person.setAddress(resultSet.getInt(5));
+                person.setPhone(resultSet.getString(6));
+                person.setMail(resultSet.getString(7));
+                person.setAccountNumber(resultSet.getString(8));
 
                 people.add(person);
             }

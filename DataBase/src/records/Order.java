@@ -15,8 +15,9 @@ public class Order extends AbstractRecord{
 
     }
 
-    public Order(String orderID, String status){
-        this.status = status;
+    public Order(String orderID){
+        this.orderID = orderID;
+        this.status = "Zlozone";
         Date date = new Date(Calendar.getInstance().getTime().getTime());
         this.date = date.toString();
     }

@@ -64,11 +64,11 @@ public class DeliveryImplementation extends RecordAdapter {
             resultSet = preparedStatement.executeQuery();
 
             while (resultSet.next()) {
-                delivery.setID(resultSet.getInt("ID"));
-                delivery.setNIP(resultSet.getString("NIP"));
-                delivery.setInvoiceNumber(resultSet.getString("invoiceNumber"));
-                delivery.setDate(resultSet.getString("date"));
-                delivery.setStatus(resultSet.getString("status"));
+                delivery.setID(resultSet.getInt(1));
+                delivery.setNIP(resultSet.getString(2));
+                delivery.setInvoiceNumber(resultSet.getString(3));
+                delivery.setDate(resultSet.getString(4));
+                delivery.setStatus(resultSet.getString(5));
             }
 
         } catch (Exception e) {

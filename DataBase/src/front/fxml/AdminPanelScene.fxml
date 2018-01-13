@@ -1,14 +1,100 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.jfoenix.validation.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="front.controllers.AdminPanelScene"
-            prefHeight="400.0" prefWidth="600.0">
-
+<AnchorPane prefHeight="573.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="front.controllers.AdminPanelScene">
+    <children>
+        <VBox layoutX="165.0" layoutY="23.0" spacing="10.0">
+            <children>
+                <Pane layoutX="166.0" layoutY="14.0" prefHeight="52.0" prefWidth="492.0" style="-fx-background-color: #FF8E3B;" styleClass="card">
+                    <children>
+                        <Label layoutX="164.0" layoutY="9.0" text="Admin Panel" textFill="WHITE">
+                            <font>
+                                <Font name="Roboto Bold" size="29.0" />
+                            </font>
+                        </Label>
+                    </children>
+                </Pane>
+                <VBox layoutX="166.0" layoutY="88.0" spacing="10.0">
+                    <children>
+                        <HBox layoutX="166.0" layoutY="89.0" spacing="128.0">
+                            <children>
+                                <ComboBox fx:id="textSQL" layoutX="166.0" layoutY="90.0" prefHeight="40.0" prefWidth="284.0" />
+                                <JFXButton layoutX="455.0" layoutY="90.0" onAction="#ViewButtonHandler" prefHeight="40.0" prefWidth="78.0" style="-fx-background-color: #FF8E3B;" text="View" textFill="WHITE">
+                                    <font>
+                                        <Font name="Roboto Bold" size="19.0" />
+                                    </font>
+                                </JFXButton>
+                            </children>
+                        </HBox>
+                        <HBox layoutX="166.0" layoutY="148.0" spacing="128.0">
+                            <children>
+                                <TextField fx:id="selectSQL" layoutX="166.0" layoutY="149.0" prefHeight="40.0" prefWidth="284.0" />
+                                <JFXButton layoutX="455.0" layoutY="149.0" onAction="#SelectButtonHandler" prefHeight="40.0" prefWidth="79.0" style="-fx-background-color: #FF8E3B;" text="Select" textFill="WHITE">
+                                    <font>
+                                        <Font name="Roboto Bold" size="18.0" />
+                                    </font>
+                                </JFXButton>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+                <TableView fx:id="tableView" layoutX="166.0" layoutY="205.0" prefHeight="326.0" prefWidth="492.0" />
+            <HBox spacing="120.0">
+               <children>
+                  <TextField fx:id="executeSQL" layoutX="166.0" layoutY="149.0" prefHeight="40.0" prefWidth="284.0" />
+                  <JFXButton fx:id="executeButton" layoutX="455.0" layoutY="149.0" onAction="#ExecuteButtonHandler" prefHeight="40.0" prefWidth="88.0" style="-fx-background-color: #FF8E3B;" text="Execute" textFill="WHITE">
+                     <font>
+                        <Font name="Roboto Bold" size="18.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </HBox>
+            </children>
+        </VBox>
+        <Pane prefHeight="573.0" prefWidth="110.0" style="-fx-background-color: #FF8E3B;">
+            <children>
+                <RequiredFieldValidator layoutX="44.0" layoutY="58.0" />
+                <VBox layoutX="7.0" layoutY="397.0" spacing="14.0">
+                    <children>
+                        <Text fill="WHITE" layoutX="7.0" layoutY="457.0" onMouseClicked="#MakeBackupButtonHandler" strokeType="OUTSIDE" strokeWidth="0.0" text="Make backup" textAlignment="CENTER" wrappingWidth="96.7294921875">
+                            <font>
+                                <Font name="Roboto Bold" size="22.0" />
+                            </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="7.0" layoutY="502.0" onMouseClicked="#LoadBackupButtonHandler" strokeType="OUTSIDE" strokeWidth="0.0" text="Load backup" textAlignment="CENTER" wrappingWidth="96.7294921875">
+                            <font>
+                                <Font name="Roboto Bold" size="22.0" />
+                            </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="7.0" layoutY="545.0" onMouseClicked="#DropDataBaseButtonHandler" strokeType="OUTSIDE" strokeWidth="0.0" text="Drop DB" textAlignment="CENTER" wrappingWidth="96.7294921875">
+                            <font>
+                                <Font name="Roboto Bold" size="22.0" />
+                            </font>
+                        </Text>
+                    </children>
+                </VBox>
+            <VBox layoutY="35.0" spacing="20.0">
+               <children>
+                  <Text fill="WHITE" layoutX="7.0" layoutY="50.0" onMouseClicked="#LogoutTextHandler" strokeType="OUTSIDE" strokeWidth="0.0" text="Logout" textAlignment="CENTER" wrappingWidth="96.7294921875">
+                     <font>
+                        <Font name="Roboto Bold" size="29.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutY="98.0" onMouseClicked="#ChangeDataTextHandler" strokeType="OUTSIDE" strokeWidth="0.0" text="Change data" textAlignment="CENTER" wrappingWidth="110.0">
+                     <font>
+                        <Font name="Roboto Bold" size="24.0" />
+                     </font>
+                  </Text>
+               </children>
+            </VBox>
+            </children></Pane>
+    </children>
 </AnchorPane>

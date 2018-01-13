@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.validation.*?>
+<?import javafx.scene.text.*?>
+<?import com.jfoenix.controls.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="461.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="front.controllers.ChangeYourDataScene">
+    <children>
+        <JFXButton layoutX="430.0" layoutY="374.0" onAction="#changeButtonHandler" prefHeight="52.0" prefWidth="182.0" style="-fx-background-color: #2bbbab;" text="Change" textFill="WHITE">
+            <font>
+                <Font name="Roboto Bold" size="26.0" />
+            </font>
+        </JFXButton>
+        <VBox layoutX="130.0" layoutY="87.0" spacing="33.0">
+            <children>
+                <JFXTextField fx:id="mailText" focusColor="#2bbbab" labelFloat="true" layoutX="130.0" layoutY="152.0" maxWidth="300.0" minWidth="220.0" prefHeight="35.0" prefWidth="220.0" promptText="Mail" unFocusColor="#9e9e9e">
+                    <font>
+                        <Font name="Roboto Bold" size="13.0" />
+                    </font>
+                </JFXTextField>
+                <JFXTextField fx:id="streetText" focusColor="#2bbbab" labelFloat="true" layoutX="130.0" layoutY="343.0" maxWidth="300.0" minWidth="220.0" prefHeight="35.0" prefWidth="220.0" promptText="Street" unFocusColor="#9e9e9e">
+                    <font>
+                        <Font name="Roboto Bold" size="13.0" />
+                    </font>
+                </JFXTextField>
+                <JFXTextField fx:id="provinceText" focusColor="#2bbbab" labelFloat="true" layoutX="130.0" layoutY="473.0" maxWidth="300.0" minWidth="220.0" prefHeight="35.0" prefWidth="220.0" promptText="Province" unFocusColor="#9e9e9e">
+                    <font>
+                        <Font name="Roboto Bold" size="13.0" />
+                    </font>
+                </JFXTextField>
+                <JFXTextField fx:id="countryText" focusColor="#2bbbab" labelFloat="true" layoutX="130.0" layoutY="538.0" maxWidth="300.0" minWidth="220.0" prefHeight="35.0" prefWidth="220.0" promptText="Country" unFocusColor="#9e9e9e">
+                    <font>
+                        <Font name="Roboto Bold" size="13.0" />
+                    </font>
+                </JFXTextField>
+            </children>
+        </VBox>
+        <VBox layoutX="411.0" layoutY="87.0" spacing="33.0">
+            <children>
+                <JFXTextField fx:id="phoneText" focusColor="#2bbbab" labelFloat="true" layoutX="411.0" layoutY="213.0" maxWidth="300.0" minWidth="220.0" prefHeight="35.0" prefWidth="220.0" promptText="Phone" unFocusColor="#9e9e9e">
+                    <font>
+                        <Font name="Roboto Bold" size="13.0" />
+                    </font>
+                </JFXTextField>
+                <JFXTextField fx:id="buildingNumberText" focusColor="#2bbbab" labelFloat="true" layoutX="411.0" layoutY="343.0" maxWidth="300.0" minWidth="220.0" prefHeight="35.0" prefWidth="220.0" promptText="Building Number" unFocusColor="#9e9e9e">
+                    <font>
+                        <Font name="Roboto Bold" size="13.0" />
+                    </font>
+                </JFXTextField>
+                <JFXTextField fx:id="cityText" focusColor="#2bbbab" labelFloat="true" maxWidth="300.0" minWidth="220.0" prefHeight="35.0" prefWidth="220.0" promptText="City" unFocusColor="#9e9e9e">
+                    <font>
+                        <Font name="Roboto Bold" size="13.0" />
+                    </font>
+                </JFXTextField>
+                <JFXTextField fx:id="postalCodeText" focusColor="#2bbbab" labelFloat="true" layoutX="411.0" layoutY="408.0" maxWidth="300.0" minWidth="220.0" prefHeight="35.0" prefWidth="220.0" promptText="Postal Code" unFocusColor="#9e9e9e">
+                    <font>
+                        <Font name="Roboto Bold" size="13.0" />
+                    </font>
+                </JFXTextField>
+            </children>
+        </VBox>
+        <Pane layoutX="166.0" layoutY="14.0" prefHeight="52.0" prefWidth="368.0" style="-fx-background-color: #2bbbab;" styleClass="card">
+            <children>
+                <Label layoutX="104.0" layoutY="9.0" text="Change Data" textFill="WHITE">
+                    <font>
+                        <Font name="Roboto Bold" size="29.0" />
+                    </font>
+                </Label>
+            </children>
+        </Pane>
+        <Pane prefHeight="461.0" prefWidth="110.0" style="-fx-background-color: #2BBBAC;">
+            <children>
+                <RequiredFieldValidator layoutX="44.0" layoutY="58.0" />
+            <VBox layoutX="7.0" layoutY="14.095703125" spacing="20.0">
+               <children>
+                  <Text fill="WHITE" layoutX="7.0" layoutY="41.0" onMouseClicked="#LogoutTextHandler" strokeType="OUTSIDE" strokeWidth="0.0" text="Logout" textAlignment="CENTER" wrappingWidth="96.7294921875">
+                     <font>
+                        <Font name="Roboto Bold" size="29.0" />
+                     </font>
+                  </Text>
+                      <Text fill="WHITE" layoutX="15.0" layoutY="85.0" onMouseClicked="#BackTextHandler" strokeType="OUTSIDE" strokeWidth="0.0" text="Back" textAlignment="CENTER" wrappingWidth="80.7294921875">
+                          <font>
+                              <Font name="Roboto Bold" size="29.0" />
+                          </font>
+                      </Text>
+               </children>
+            </VBox>
+            </children></Pane>
+    </children>
+</AnchorPane>
