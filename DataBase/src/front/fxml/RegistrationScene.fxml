@@ -18,12 +18,12 @@
       </JFXButton>
       <VBox layoutX="130.0" layoutY="87.0" spacing="28.0">
          <children>
-            <JFXTextField fx:id="loginText" focusColor="#2bbbab" layoutX="130.0" layoutY="87.0" maxWidth="300.0" minWidth="220.0" prefHeight="35.0" prefWidth="220.0" promptText="Login" unFocusColor="#9e9e9e">
+            <JFXTextField fx:id="loginText" focusColor="#2bbbab" labelFloat="true" layoutX="130.0" layoutY="87.0" maxWidth="300.0" minWidth="220.0" prefHeight="35.0" prefWidth="220.0" promptText="Login" unFocusColor="#9e9e9e">
                <font>
                   <Font name="Roboto Bold" size="13.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="mailText" focusColor="#2bbbab" layoutX="130.0" layoutY="152.0" maxWidth="300.0" minWidth="220.0" prefHeight="35.0" prefWidth="220.0" promptText="Mail" unFocusColor="#9e9e9e">
+            <JFXTextField fx:id="mailText" focusColor="#2bbbab" labelFloat="true" layoutX="130.0" layoutY="152.0" maxWidth="300.0" minWidth="220.0" prefHeight="35.0" prefWidth="220.0" promptText="Mail" unFocusColor="#9e9e9e">
                <font>
                   <Font name="Roboto Bold" size="13.0" />
                </font>
@@ -38,17 +38,17 @@
                   <Font name="Roboto Bold" size="13.0" />
                </font>
             </JFXPasswordField>
-            <JFXTextField fx:id="streetText" focusColor="#2bbbab" layoutX="130.0" layoutY="343.0" maxWidth="300.0" minWidth="220.0" prefHeight="35.0" prefWidth="220.0" promptText="Street" unFocusColor="#9e9e9e">
+            <JFXTextField fx:id="streetText" focusColor="#2bbbab" labelFloat="true" layoutX="130.0" layoutY="343.0" maxWidth="300.0" minWidth="220.0" prefHeight="35.0" prefWidth="220.0" promptText="Street" unFocusColor="#9e9e9e">
                <font>
                   <Font name="Roboto Bold" size="13.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="provinceText" focusColor="#2bbbab" layoutX="130.0" layoutY="473.0" maxWidth="300.0" minWidth="220.0" prefHeight="35.0" prefWidth="220.0" promptText="Province" unFocusColor="#9e9e9e">
+            <JFXTextField fx:id="provinceText" focusColor="#2bbbab" labelFloat="true" layoutX="130.0" layoutY="473.0" maxWidth="300.0" minWidth="220.0" prefHeight="35.0" prefWidth="220.0" promptText="Province" unFocusColor="#9e9e9e">
                <font>
                   <Font name="Roboto Bold" size="13.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="countryText" focusColor="#2bbbab" layoutX="130.0" layoutY="538.0" maxWidth="300.0" minWidth="220.0" prefHeight="35.0" prefWidth="220.0" promptText="Country" unFocusColor="#9e9e9e">
+            <JFXTextField fx:id="countryText" focusColor="#2bbbab" labelFloat="true" layoutX="130.0" layoutY="538.0" maxWidth="300.0" minWidth="220.0" prefHeight="35.0" prefWidth="220.0" promptText="Country" unFocusColor="#9e9e9e">
                <font>
                   <Font name="Roboto Bold" size="13.0" />
                </font>
@@ -57,32 +57,32 @@
       </VBox>
       <VBox layoutX="411.0" layoutY="87.0" spacing="28.0">
          <children>
-            <JFXTextField fx:id="firstNameText" focusColor="#2bbbab" layoutX="411.0" layoutY="87.0" maxWidth="300.0" minWidth="220.0" prefHeight="35.0" prefWidth="220.0" promptText="Fist Name" unFocusColor="#9e9e9e">
+            <JFXTextField fx:id="firstNameText" focusColor="#2bbbab" labelFloat="true" layoutX="411.0" layoutY="87.0" maxWidth="300.0" minWidth="220.0" prefHeight="35.0" prefWidth="220.0" promptText="Fist Name" unFocusColor="#9e9e9e">
                <font>
                   <Font name="Roboto Bold" size="13.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="lastNameText" focusColor="#2bbbab" layoutX="411.0" layoutY="152.0" maxWidth="300.0" minWidth="220.0" prefHeight="35.0" prefWidth="220.0" promptText="Last Name" unFocusColor="#9e9e9e">
+            <JFXTextField fx:id="lastNameText" focusColor="#2bbbab" labelFloat="true" layoutX="411.0" layoutY="152.0" maxWidth="300.0" minWidth="220.0" prefHeight="35.0" prefWidth="220.0" promptText="Last Name" unFocusColor="#9e9e9e">
                <font>
                   <Font name="Roboto Bold" size="13.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="phoneText" focusColor="#2bbbab" layoutX="411.0" layoutY="213.0" maxWidth="300.0" minWidth="220.0" prefHeight="35.0" prefWidth="220.0" promptText="Phone" unFocusColor="#9e9e9e">
+            <JFXTextField fx:id="phoneText" focusColor="#2bbbab" labelFloat="true" layoutX="411.0" layoutY="213.0" maxWidth="300.0" minWidth="220.0" prefHeight="35.0" prefWidth="220.0" promptText="Phone" unFocusColor="#9e9e9e">
                <font>
                   <Font name="Roboto Bold" size="13.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="buildingNumberText" focusColor="#2bbbab" layoutX="411.0" layoutY="343.0" maxWidth="300.0" minWidth="220.0" prefHeight="35.0" prefWidth="220.0" promptText="Building Number" unFocusColor="#9e9e9e">
+            <JFXTextField fx:id="buildingNumberText" focusColor="#2bbbab" labelFloat="true" layoutX="411.0" layoutY="343.0" maxWidth="300.0" minWidth="220.0" prefHeight="35.0" prefWidth="220.0" promptText="Building Number" unFocusColor="#9e9e9e">
                <font>
                   <Font name="Roboto Bold" size="13.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="cityText" focusColor="#2bbbab" maxWidth="300.0" minWidth="220.0" prefHeight="35.0" prefWidth="220.0" promptText="City" unFocusColor="#9e9e9e">
+            <JFXTextField fx:id="cityText" focusColor="#2bbbab" labelFloat="true" maxWidth="300.0" minWidth="220.0" prefHeight="35.0" prefWidth="220.0" promptText="City" unFocusColor="#9e9e9e">
                <font>
                   <Font name="Roboto Bold" size="13.0" />
                </font>
             </JFXTextField>
-            <JFXTextField fx:id="postalCodeText" focusColor="#2bbbab" layoutX="411.0" layoutY="408.0" maxWidth="300.0" minWidth="220.0" prefHeight="35.0" prefWidth="220.0" promptText="Postal Code" unFocusColor="#9e9e9e">
+            <JFXTextField fx:id="postalCodeText" focusColor="#2bbbab" labelFloat="true" layoutX="411.0" layoutY="408.0" maxWidth="300.0" minWidth="220.0" prefHeight="35.0" prefWidth="220.0" promptText="Postal Code" unFocusColor="#9e9e9e">
                <font>
                   <Font name="Roboto Bold" size="13.0" />
                </font>

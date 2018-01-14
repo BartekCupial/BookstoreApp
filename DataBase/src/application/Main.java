@@ -29,12 +29,14 @@ public class Main extends Application {
     public static String ClientSceneFile = "/front/fxml/ClientPanelScene.fxml";
     public static String WorkerSceneID = "worker";
     public static String WorkerSceneFile = "/front/fxml/WorkerPanelScene.fxml";
-    public static String RegistrationSceneID = "worker";
+    public static String RegistrationSceneID = "register";
     public static String RegistrationSceneFile = "/front/fxml/RegistrationScene.fxml";
     public static String ResetPasswordSceneID = "reset";
     public static String ResetPasswordSceneFile = "/front/fxml/ResetPasswordScene.fxml";
     public static String ChangeYourDataSceneID = "change";
     public static String ChangeYourDataSceneFile = "/front/fxml/ChangeYourDataScene.fxml";
+    public static String PopupSceneID = "popup";
+    public static String PopupSceneFile = "/front/fxml/PopupScene.fxml";
 
 
 
@@ -62,7 +64,7 @@ public class Main extends Application {
 
     public static void closeProgram(){
 //        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-//        alert.setTitle("Confirmation");
+//        alert.sexPopupSceneFilePopupSceneFiletTitle("Confirmation");
 //        alert.setHeaderText("Look, a Confirmation Dialog");
 //        alert.setContentText("Do you really want to exit?");
 //
@@ -81,6 +83,7 @@ public class Main extends Application {
         mainContainer.loadScreen(Main.RegistrationSceneID, Main.RegistrationSceneFile);
         mainContainer.loadScreen(Main.ResetPasswordSceneID, Main.ResetPasswordSceneFile);
         mainContainer.loadScreen(Main.ChangeYourDataSceneID, Main.ChangeYourDataSceneFile);
+        //mainContainer.loadScreen(Main.PopupSceneID, Main.PopupSceneFile);
     }
 
 
@@ -118,6 +121,17 @@ public class Main extends Application {
         }catch(Exception e){
             e.printStackTrace();
             System.out.println("Error on Building Data");
+        }
+    }
+
+    public static void ExecuteQuery(String SQL){
+        Connection c;
+        try{
+            c = DBConnect.getConnection();
+            ResultSet rs = c.createStatement().executeQuery(SQL);
+        }catch (Exception e){
+            e.printStackTrace();
+            System.out.println("Error in Query");
         }
     }
 }

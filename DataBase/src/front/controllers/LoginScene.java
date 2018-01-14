@@ -8,11 +8,13 @@ import implementation.PeopleImplementation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import records.Address;
 import records.People;
 
 import java.net.URL;
+import java.util.Objects;
 import java.util.ResourceBundle;
 
 import static application.Main.closeProgram;
@@ -23,7 +25,7 @@ public class LoginScene implements Initializable {
     @FXML
     private JFXPasswordField passwordText;
 
-    public static String userID;
+    public static String userID = "not";
 
     private PeopleImplementation peopleImplementation = new PeopleImplementation();
     private AddressImplementation addressImplementation = new AddressImplementation();
@@ -35,11 +37,13 @@ public class LoginScene implements Initializable {
     }
 
     public void NextButtonHandler(){
-        loginText.getText();
-        passwordText.getText();
 
+
+        if(Objects.equals(loginText.getText(), "") || Objects.equals(passwordText.getText(), "")){
+            return;
+        }
         people = (People) peopleImplementation.selectById(loginText.getText());
-        if(people==null){
+        if(!people.getLogin().equals(loginText.getText())){
             System.out.println("wrong password or login");
             return;
         }
@@ -100,4 +104,5 @@ public class LoginScene implements Initializable {
                 break;
         }
     }
+
 }

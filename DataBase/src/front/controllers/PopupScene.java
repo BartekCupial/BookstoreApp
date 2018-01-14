@@ -1,32 +1,23 @@
 package front.controllers;
 
-import javafx.application.Application;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Group;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
-import javafx.stage.Popup;
+import application.Main;
+import javafx.event.ActionEvent;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 
+public class PopupScene extends Stage {
+    public PopupScene() {
+        this.setResizable(true);
+        this.setTitle("Insert");
+        //this.initStyle(StageStyle.UNDECORATED);
+        this.setAlwaysOnTop(true);
+        this.sizeToScene();
+        this.setOpacity(0);
+        this.initModality(Modality.APPLICATION_MODAL);
+        Main.mainContainer.setScene(Main.PopupSceneID, this);
+    }
 
-public class PopupScene extends Application {
-    Group root = new Group();
-    public static PopupScene popupScene;
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        popupScene = this;
-        FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(Class.class
-                .getResource("/front/fxml/PopupScene.fxml"));
-        root = loader.load();
-        Scene scene = new Scene(root);
+    public void ExecuteButtonHandler(ActionEvent e) {
 
-        primaryStage.setResizable(false);
-        primaryStage.setTitle("Insert");
-        primaryStage.initStyle(StageStyle.UNDECORATED);
-
-        primaryStage.setScene(scene);
-        primaryStage.show();
     }
 }

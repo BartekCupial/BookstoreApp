@@ -117,6 +117,7 @@ public class ClientPanelScene implements Initializable {
             basketTable.getColumns().clear();
         }
         basketTable.refresh();
+        System.out.println("bracket is clear!");
     }
 
     public void ClickTableHandler(MouseEvent event){
@@ -125,7 +126,9 @@ public class ClientPanelScene implements Initializable {
         }
     }
 
-    public void LogoutTextHandler(MouseEvent e) { Main.mainContainer.setScene(Main.LoginSceneID, Main.window);
+    public void LogoutTextHandler(MouseEvent e) {
+        LoginScene.userID="not";
+        Main.mainContainer.setScene(Main.LoginSceneID, Main.window);
     }
 
     public void ChangeDataTextHandler(MouseEvent e) {

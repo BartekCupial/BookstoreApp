@@ -22,8 +22,6 @@ public class WorkerPanelScene implements Initializable {
     private TextField selectSQL;
     @FXML
     private TableView tableView;
-    @FXML
-    private JFXButton executeButton;
 
     private ArrayList<String> choices = new ArrayList<>();
 
@@ -43,6 +41,7 @@ public class WorkerPanelScene implements Initializable {
     }
 
     public void LogoutTextHandler(MouseEvent e) {
+        LoginScene.userID="not";
         Main.mainContainer.setScene(Main.LoginSceneID, Main.window);
     }
 
