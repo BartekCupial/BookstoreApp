@@ -10,7 +10,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#NextButtonHandler" prefHeight="640.0" prefWidth="660.0" styleClass="root" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="front.controllers.LoginScene">
+<AnchorPane minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#NextButtonHandler" prefHeight="640.0" prefWidth="660.0" styleClass="root" stylesheets="@../css/style.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="front.controllers.scenes.LoginScene">
    <children>
       <AnchorPane layoutX="69.0" layoutY="112.0" prefHeight="456.0" prefWidth="522.0" styleClass="card">
          <children>

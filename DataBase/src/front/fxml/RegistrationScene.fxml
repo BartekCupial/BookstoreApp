@@ -9,7 +9,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="560.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="front.controllers.RegistrationScene">
+<AnchorPane prefHeight="560.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="front.controllers.scenes.RegistrationScene">
    <children>
       <JFXButton fx:id="registerButton" layoutX="430.0" layoutY="474.0" onAction="#registerButtonHandler" prefHeight="52.0" prefWidth="182.0" style="-fx-background-color: #2bbbab;" text="Register" textFill="WHITE">
          <font>

@@ -8,7 +8,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="141.0" prefWidth="600.0" style="-fx-background-color: #7BDFD4;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="front.controllers.PopupScene">
+<AnchorPane prefHeight="141.0" prefWidth="600.0" style="-fx-background-color: #7BDFD4;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="front.controllers.scenes.PopupScene">
    <children>
       <JFXButton fx:id="executeButton" layoutX="498.0" layoutY="87.0" onAction="#ExecuteButtonHandler" prefHeight="40.0" prefWidth="88.0" style="-fx-background-color: #008577;" text="Add" textFill="WHITE">
          <font>
